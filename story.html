@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N8NXNNT6');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MST4P557TL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MST4P557TL');
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>상상의 문 — STORY</title>
+
+<!-- 공용 웹폰트 (Paperozi) -->
+<link rel="stylesheet" href="css/fonts.css" />
+<!-- STORY 영문 타이틀용 세리프 -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --navy:   #0a0e1c;
+    --gold:   #f2d7ac;
+    --cream:  #ece4d6;
+    --paper:  #ece9e2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #ededf0;
+    color: #2a2a2a;
+    /* 거의 모든 텍스트는 Paperozi */
+    font-family: 'Paperozi', "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+  img { display: block; -webkit-user-drag: none; user-select: none; }
+
+  /* ══════════════ 상단 헤더 ══════════════ */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    height: 78px;
+    background: linear-gradient(180deg, #0c1124 0%, #080b18 100%);
+    border-bottom: 1px solid rgba(200,168,99,.18);
+    display: flex; align-items: center;
+    padding: 0 clamp(20px, 4vw, 56px);
+  }
+  .topbar .brand { display: flex; align-items: center; flex: none; }
+  .topbar .brand img { height: 40px; width: auto; }
+  .topbar nav {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    gap: 38px;                       /* 메인 헤더 메뉴 간격과 동일하게 */
+  }
+  .topbar nav a {
+    position: relative;
+    color: #d9d2c4; text-decoration: none;
+    font-size: 16px; font-weight: 600; letter-spacing: 1.5px;   /* 메인 메뉴와 동일한 위치/크기 */
+    white-space: nowrap;
+    transition: color .2s ease;
+  }
+  .topbar nav a:hover { color: var(--gold); }
+  .topbar nav a.active { color: var(--gold); font-weight: 700; }
+  .topbar nav a.active::before {
+    content: ""; position: absolute; left: 50%; top: -14px;
+    width: 13px; height: 13px; transform: translateX(-50%);
+    background: url('img/story/header_star.webp') center/contain no-repeat;
+  }
+  .topbar .spacer { width: 120px; flex: none; }   /* 좌우 균형용 */
+
+  /* 우상단 예약 확인 버튼 (themes 페이지와 동일) */
+  .topbar .qbtn {
+    flex: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 44px; padding: 0 22px;
+    border: 1px solid rgba(200,168,99,.55); border-radius: 6px;
+    color: var(--gold); text-decoration: none;
+    font-size: 15px; font-weight: 600; letter-spacing: 1px;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .topbar .qbtn:hover { background: rgba(200,168,99,.12); border-color: var(--gold); }
+  .topbar .qbtn span { font-size: 18px; }
+
+  .nav-burger{ display:none; flex-direction:column; gap:5px; align-items:center; justify-content:center; width:42px; height:42px; flex:none; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+  .nav-burger span{ width:20px; height:2px; background:var(--gold); border-radius:2px; transition:transform .25s, opacity .2s; }
+  .nav-burger.on span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-burger.on span:nth-child(2){ opacity:0; }
+  .nav-burger.on span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .topbar nav a.nav-cta{ display:none; }
+  @media (max-width:760px){
+    .topbar { height:64px; padding:0 16px; justify-content:space-between; }
+    .topbar .spacer { display:none; }
+    .nav-burger{ display:flex; }
+    .topbar > nav{ position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0;
+                   background:linear-gradient(180deg,#0c1124,#080b18); border-bottom:0; box-shadow:none;
+                   max-height:0; overflow:hidden; transition:max-height .32s ease; }
+    .topbar > nav.open{ max-height:400px; border-bottom:1px solid var(--line); box-shadow:0 14px 28px rgba(0,0,0,.45); }
+    .topbar nav a{ padding:15px 22px; border-top:1px solid rgba(255,255,255,.06); font-size:15px; letter-spacing:0; }
+    .topbar nav a:first-child{ border-top:0; }
+    .topbar nav a.active::before{ display:none; }
+    .topbar nav a.active{ color:var(--gold); }
+    .topbar nav a.nav-cta{ display:block; color:var(--gold); font-weight:700; background:rgba(200,168,99,.08); }
+    .topbar .qbtn { display:none; }
+  }
+
+  /* ══════════════ STORY 타이틀 ══════════════ */
+  .story-head {
+    text-align: center;
+    padding: clamp(48px, 7vw, 96px) 16px clamp(28px, 4vw, 46px);
+  }
+  .story-head .title {
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+    font-size: clamp(46px, 7vw, 90px);
+    font-weight: 600; letter-spacing: .18em; text-indent: .18em;
+    color: #1c2030;
+    line-height: 1;
+  }
+  .story-head .line {
+    width: clamp(120px, 16vw, 220px); height: 1px;
+    margin: 18px auto 14px;
+    background: linear-gradient(90deg, transparent, #b9a06a 35%, #b9a06a 65%, transparent);
+    position: relative;
+  }
+  .story-head .line::after {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: 16px; height: 18px; transform: translate(-50%, -55%);
+    background: url('img/story/header_star.webp') center/contain no-repeat;
+  }
+  .story-head .sub {
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+    font-size: clamp(13px, 1.5vw, 18px);
+    letter-spacing: .42em; text-indent: .42em;
+    color: #9a937f; font-weight: 500;
+  }
+
+  /* ══════════════ 포스터 (레이어 합성) ══════════════ */
+  .poster-wrap { padding: 0 16px clamp(40px, 6vw, 80px); }
+  .poster {
+    position: relative;
+    width: 100%; max-width: 1040px; margin: 0 auto;
+    aspect-ratio: 1312 / 2137;
+    background: url('img/story/story_bg.webp') center/100% 100% no-repeat;
+    container-type: inline-size;          /* 내부를 cqw 단위로 스케일 */
+    color: var(--cream);
+    filter: drop-shadow(0 30px 70px rgba(0,0,0,.35));
+  }
+  .poster .lyr { position: absolute; }
+
+  /* 상상의 문 로고 — transform 대신 margin으로 중앙정렬(등장 모션과 충돌 방지) */
+  .l-logo { left: 50%; top: 6%; width: 37%; margin-left: -18.5%; }
+  .l-logo img { width: 100%; height: auto;
+    filter: drop-shadow(0 4px 18px rgba(0,0,0,.5)); }
+
+  /* 카피 공통 */
+  .copy { line-height: 1.55; text-shadow: 0 2px 10px rgba(0,0,0,.6); }
+  .copy .h {
+    font-weight: 700; font-size: 2.9cqw; line-height: 1.4;
+    color: #f6efe0; letter-spacing: .01em; margin-bottom: 1.1cqw;
+  }
+  .copy .t { font-weight: 300; font-size: 1.92cqw; color: #ded6c6; }
+
+  .l-copyL { left: 12.5%; top: 22.5%; width: 30%; }
+  .l-copyR { left: 66%;  top: 29%;   width: 31%; }
+  .l-copyR .t { font-weight: 300; font-size: 1.92cqw; color: #ded6c6; }
+
+  /* 생각풍선 */
+  .l-bubble {
+    left: 16%; top: 43.5%; width: 23%;
+    aspect-ratio: 423 / 334;
+    background: url('img/story/story_l2.webp') center/contain no-repeat;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .l-bubble span {
+    display: block; text-align: center;
+    font-weight: 500; font-size: 1.92cqw; line-height: 1.5;
+    color: #f1ece1; padding-bottom: 3.5cqw;
+    text-shadow: 0 1px 6px rgba(0,0,0,.5);
+  }
+
+  /* 종이 메모들 — bg 밖으로 살짝 삐져나오게 */
+  .l-paperL { left: -2%;  top: 30%; width: 13%; }
+  .l-paperR { left: 89%; top: 46%; width: 14.5%; }
+  .l-paperL img, .l-paperR img { width: 100%; height: auto;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,.45)); }
+
+  /* 열쇠구멍 액자 */
+  .l-frame { left: 72%; top: 40.5%; width: 10.5%; }
+  .l-frame img { width: 100%; height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,.5)); }
+
+  /* 손전등 든 소녀 */
+  .l-girl { left: 50%; top: 44.5%; width: 31%; }
+  .l-girl img { width: 100%; height: auto;
+    filter: drop-shadow(0 16px 30px rgba(0,0,0,.55)); }
+
+  /* 램프·시계·책 정물 — 더 크게, bg 좌하단 밖으로 삐져나오게 */
+  .l-still { left: -9%; bottom: 0%; width: 54%; }
+  .l-still img { width: 100%; height: auto;
+    filter: drop-shadow(0 14px 26px rgba(0,0,0,.5)); }
+
+  /* 가운데 카피 */
+  .l-copyM { left: 20.5%; top: 66.5%; width: 25%; }
+  .l-copyM .t { font-weight: 300; font-size: 1.92cqw; line-height: 1.6; color: #e6ddcc; }
+
+  /* 하단 우측 카피 */
+  .l-copyB {
+    right: 5.5%; bottom: 3.2%; width: 42%;
+    text-align: right; font-weight: 400; font-size: 1.92cqw;
+    color: #ece4d4; text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  }
+
+  /* 반짝이는 별 장식 */
+  .l-star {
+    background: url('img/story/header_star.webp') center/contain no-repeat;
+    animation: twinkle 3.4s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: .35; transform: scale(.85); }
+    50%      { opacity: 1;   transform: scale(1.15); }
+  }
+
+  /* ══════════════ 열쇠 패널 ══════════════ */
+  .key-wrap { padding: clamp(30px,5vw,70px) 16px clamp(210px, calc(90px + 17.8vw), 328px); text-align: center; }
+  /* 팻말 위 별들 (동일 크기 SVG, 위가 가장 진함, 스크롤 시 하나씩 등장) */
+  .key-stars { display: flex; flex-direction: column; align-items: center;
+               gap: clamp(22px, 3vw, 40px);          /* 간격 넓힘 */
+               margin: 0 auto clamp(26px, 4vw, 50px);
+               transform: translateY(-28px); }       /* 별 그룹만 위로 (위 이미지·아래 팻말은 그대로) */
+  .key-stars svg { display: block; width: 22px; height: 22px; color: var(--gold);
+                   opacity: var(--op);
+                   filter: drop-shadow(0 0 8px rgba(242,215,172,.5)); }
+  .key-stars svg:nth-child(1){ --op:1;   }
+  .key-stars svg:nth-child(2){ --op:.82; }
+  .key-stars svg:nth-child(3){ --op:.65; }
+  .key-stars svg:nth-child(4){ --op:.45; }
+  /* 펄스: (1·3) 그룹과 (2·4) 그룹이 시간차로 살짝 커졌다 작아짐.
+     등장 시 GSAP가 svg의 transform을 쓰므로, 충돌 피하려 안쪽 path를 스케일 */
+  .key-stars svg path { transform-box: fill-box; transform-origin: center;
+                        animation: starPulse 2s ease-in-out infinite; }
+  .key-stars svg:nth-child(2) path,
+  .key-stars svg:nth-child(4) path { animation-delay: 1s; }
+  @keyframes starPulse { 0%, 100% { transform: scale(0.85); } 50% { transform: scale(1.45); } }
+  .key-panel {
+    position: relative;
+    width: 100%; max-width: 540px; margin: 0 auto;
+    aspect-ratio: 730 / 466;
+    background: url('img/story/story_frame.webp') center/100% 100% no-repeat;
+    container-type: inline-size;
+    display: flex; align-items: center; justify-content: center;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,.3));
+  }
+  .key-panel p {
+    text-align: center;
+    font-weight: 500; font-size: 6.2cqw; line-height: 1.65;
+    color: #efe6d2; letter-spacing: .02em;
+    text-shadow: 0 2px 10px rgba(0,0,0,.6);
+    padding: 0 14%;
+  }
+  .key-img {
+    position: absolute;
+    left: -15%; top: 36%;            /* transform 중앙정렬 대신 top 고정(등장 모션과 충돌 방지) */
+    width: 35%;
+    filter: drop-shadow(0 12px 22px rgba(0,0,0,.4));
+  }
+  .key-img img { width: 100%; height: auto; }
+
+  /* ══════════════ FOOTER (메인과 동일) ══════════════ */
+  .footer { background:#0a0f24; color:#b9c0d6; padding:clamp(40px,5vw,72px) 20px clamp(28px,4vw,46px); }
+  .footer a { color:inherit; text-decoration:none; }
+  .footer-top { max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:16px 30px; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08); }
+  .footer-hours { display:flex; align-items:center; gap:14px; }
+  .footer-hours .clock { width:36px;height:36px;border:1px solid #c8a863;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex:none; }
+  .footer-hours .ft { font-size:13px; line-height:1.7; }
+  .br-mb { display: none; }
+  @media (max-width: 620px) { .br-mb { display: inline; } }
+  /* 모바일에서만 숨기는 구분자(·) — 데스크톱은 한 줄 유지 */
+  .sep-mb { display: inline; }
+  @media (max-width: 620px) { .sep-mb { display: none; } }
+  .footer-hours .ft b { color:#e8dcc0; font-weight:600; }
+  .footer-nav { margin-left:auto; display:flex; gap:22px; flex-wrap:wrap; font-size:13px; }
+  .footer-nav a:hover { color:var(--gold); }
+  .footer-main { max-width:1280px; margin:clamp(24px,3vw,38px) auto 0; display:flex; flex-wrap:wrap; gap:30px 50px; align-items:flex-start; }
+  .footer-brand { min-width:190px; }
+  .footer-brand img { width:138px; height:auto; }
+  .footer-brand p { margin-top:10px; font-size:12px; color:#7c84a0; letter-spacing:.05em; }
+  .footer-stores { display:grid; grid-template-columns:repeat(2,minmax(210px,1fr)); gap:4px 40px; flex:1; }
+  .footer-stores div { font-size:12.5px; line-height:1.95; color:#9aa2bd; }
+  .footer-stores b { color:#c3cae0; font-weight:600; }
+  .footer-social { display:flex; gap:10px; }
+  .footer-social a { width:34px;height:34px;border-radius:50%; background:rgba(255,255,255,.08); display:flex;align-items:center;justify-content:center; font-size:12px; color:#cfd5e6; }
+  .footer-social a:hover { background:var(--gold); color:#0a0f24; }
+  .footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
+  @media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
+
+  /* ══════════════ 등장 모션 초기상태 (JS 동작 시에만) ══════════════ */
+  .gsap-on .anim { opacity: 0; will-change: transform, opacity; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gsap-on .anim { opacity: 1 !important; }
+    .l-star { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ── 헤더 ── -->
+  <header class="topbar">
+    <a class="brand" href="index.html"><img src="img/main/logo.webp" alt="상상의문 ESCAPE ROOM" /></a>
+    <nav id="navMenu">
+      <a href="story.html" class="active">상상의 문</a>
+      <a href="themes.html">테마</a>
+      <a href="reserve.html">예약</a>
+      <a href="location.html">매장안내</a>
+      <a href="notice.html">공지</a>
+      <a href="check.html" class="nav-cta">예약 확인 →</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" type="button" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    <a class="qbtn" href="check.html">예약 확인 <span>→</span></a>
+  </header>
+
+  <!-- ── STORY 타이틀 ── -->
+  <div class="story-head">
+    <h1 class="title anim" data-anim="up">STORY</h1>
+    <div class="line anim" data-anim="fade"></div>
+    <p class="sub anim" data-anim="up">The Realm of Imagination</p>
+  </div>
+
+  <!-- ── 포스터 ── -->
+  <div class="poster-wrap">
+    <div class="poster anim" id="poster" data-anim="bg">
+
+      <!-- 별 장식 (항상 반짝임) -->
+      <span class="lyr l-star" style="left:26%; top:11%; width:2.6%; aspect-ratio:1; animation-delay:.0s;"></span>
+      <span class="lyr l-star" style="left:67%; top:13%; width:3.4%; aspect-ratio:1; animation-delay:.7s;"></span>
+      <span class="lyr l-star" style="left:79%; top:20%; width:2.2%; aspect-ratio:1; animation-delay:1.3s;"></span>
+      <span class="lyr l-star" style="left:20%; top:18%; width:2%;   aspect-ratio:1; animation-delay:2s;"></span>
+
+      <!-- 상상의 문 로고 -->
+      <div class="lyr l-logo anim" data-anim="drop">
+        <img src="img/story/story_logo.webp" alt="상상의 문" />
+      </div>
+
+      <!-- 좌측 카피 -->
+      <div class="lyr l-copyL copy anim" data-anim="left">
+        <p class="h">상상했던 공간,<br>예상하지 못한 공간</p>
+        <p class="t">익숙한 문 너머에는<br>당신의 상상이 만든<br>이야기 속 공간이 펼쳐집니다.</p>
+      </div>
+
+      <!-- 우측 카피 -->
+      <div class="lyr l-copyR copy anim" data-anim="right">
+        <p class="t">어딘가 낯설고,<br>어딘가 스산한 이곳에서<br>당신의 상상력은<br>가장 빛나는 열쇠가 됩니다.</p>
+      </div>
+
+      <!-- 좌상단 종이 -->
+      <div class="lyr l-paperL anim" data-anim="drop"><img src="img/story/story_l1.webp" alt="" /></div>
+
+      <!-- 생각풍선 -->
+      <div class="lyr l-bubble anim" data-anim="pop">
+        <span>이 문을 열면<br>어떤 공간이<br>기다리고 있을까?</span>
+      </div>
+
+      <!-- 열쇠구멍 액자 -->
+      <div class="lyr l-frame anim" data-anim="swing"><img src="img/story/story_r1.webp?v=2" alt="" /></div>
+
+      <!-- 우측 종이 -->
+      <div class="lyr l-paperR anim" data-anim="drop"><img src="img/story/story_r3.webp?v=2" alt="" /></div>
+
+      <!-- 손전등 든 소녀 -->
+      <div class="lyr l-girl anim" data-anim="rise"><img src="img/story/story_r2.webp" alt="손전등을 든 소녀" /></div>
+
+      <!-- 램프·시계·책 정물 -->
+      <div class="lyr l-still anim" data-anim="rise"><img src="img/story/story_l3.webp" alt="" /></div>
+
+      <!-- 가운데 카피 -->
+      <div class="lyr l-copyM copy anim" data-anim="up">
+        <p class="t">상상의 문은<br>단순한 탈출이 아닌,<br>이야기의 주인공이 되어<br>직접 경험하고, 선택하며<br>결말을 만들어가는 곳입니다.</p>
+      </div>
+
+      <!-- 하단 우측 카피 -->
+      <p class="lyr l-copyB anim" data-anim="up">지금 당신만의 이야기를 시작해보세요</p>
+
+    </div>
+  </div>
+
+  <!-- ── 열쇠 패널 ── -->
+  <div class="key-wrap">
+    <div class="key-stars" aria-hidden="true">
+      <svg class="anim" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 5.9 5.4 10.6 12 12-6.6 1.4-11.3 6.1-12 12-.7-5.9-5.4-10.6-12-12 6.6-1.4 11.3-6.1 12-12z"/></svg>
+      <svg class="anim" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 5.9 5.4 10.6 12 12-6.6 1.4-11.3 6.1-12 12-.7-5.9-5.4-10.6-12-12 6.6-1.4 11.3-6.1 12-12z"/></svg>
+      <svg class="anim" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 5.9 5.4 10.6 12 12-6.6 1.4-11.3 6.1-12 12-.7-5.9-5.4-10.6-12-12 6.6-1.4 11.3-6.1 12-12z"/></svg>
+      <svg class="anim" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 5.9 5.4 10.6 12 12-6.6 1.4-11.3 6.1-12 12-.7-5.9-5.4-10.6-12-12 6.6-1.4 11.3-6.1 12-12z"/></svg>
+    </div>
+    <div class="key-panel anim" data-anim="up">
+      <div class="key-img anim" data-anim="keyin"><img src="img/story/story_key.webp" alt="열쇠" /></div>
+      <p class="key-text anim" data-anim="appear">당신의 상상력이<br>새로운 이야기를 여는<br>열쇠가 될 것 입니다.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER (메인과 동일) -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-hours">
+        <span class="clock">&#128337;</span>
+        <span class="ft"><b>운영 시간</b> &nbsp; 평일 12:00 - 23:00<span class="sep-mb"> &nbsp;·&nbsp; </span><br class="br-mb">주말 및 공휴일 10:00 - 23:00<br>연중무휴 (설날, 추석 당일 제외)</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="notice.html">공지사항</a>
+        <a href="check.html">예약확인</a>
+        <a href="partnership.html">제휴문의</a>
+        <a href="privacy.html">개인정보취급방침</a>
+      </nav>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/main/logo.webp" alt="상상의 문" />
+        <p>상상 그 이상의 공간</p>
+      </div>
+      <!-- 지점 연락처 (상상의문 공식 사이트 기준) -->
+      <div class="footer-stores">
+        <div><b>대학로점</b> 02-765-7771<br>서울특별시 종로구 창경궁로34길 18-5, 지하3층</div>
+        <div><b>분당서현점</b> 031-708-1777<br>경기도 성남시 분당구 황새울로342번길 11 금호리빙스텔 지하1층</div>
+        <div><b>홍대점</b> 02-336-9007<br>서울특별시 마포구 홍익로 19, 2층</div>
+        <div><b>광주점</b> 062-226-1126<br>광주광역시 동구 충장로 80-5, 6층</div>
+        <div><b>수원점</b> 010-4397-3057<br>경기도 수원시 팔달구 인계로138번길 44, 4층</div>
+        <div><b>부평점</b> 010-3242-3218<br>인천광역시 부평구 시장로12번길 7 보광빌딩 4층</div>
+        <div><b>수원2호점</b> 010-9360-4148<br>경기도 수원시 팔달구 효원로249번길 46-18 3층</div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>COPYRIGHT ⓒ 2026 상상의문. All right reserved. / created by TEAM 1</span>
+      <span>이메일 imaginarydoor@yologuys.com</span>
+      <a href="admin.html" style="color:inherit;opacity:.55">관리자</a>
+    </div>
+  </footer>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!window.gsap || reduce) return;   // GSAP 없거나 모션최소화면 정적 표시
+
+    document.documentElement.classList.add('gsap-on');
+    gsap.registerPlugin(ScrollTrigger);
+
+    // data-anim 종류별 시작 상태(from) 정의
+    var FROM = {
+      up:    { y: 48,  opacity: 0 },
+      drop:  { y: -50, opacity: 0, rotate: -5 },
+      left:  { x: -60, opacity: 0 },
+      right: { x: 60,  opacity: 0 },
+      rise:  { y: 84,  opacity: 0 },
+      pop:   { scale: .55, opacity: 0, transformOrigin: '50% 100%' },
+      swing: { rotate: -13, opacity: 0, transformOrigin: '50% 0%' },
+      bg:    { scale: .96, opacity: 0 },
+      keyin: { x: -120, rotate: -18, opacity: 0, transformOrigin: '50% 50%' }, // 왼쪽에서 비틀며 도착
+      appear:{ scale: .9, opacity: 0, transformOrigin: '50% 55%' }            // 그 자리에서 텍스트가 생김
+    };
+
+    var DUR = 1.4;   // 기본 등장 속도(느리게)
+
+    // 등장: from 상태에 있는 transform 속성만 0/1로 되돌리고, 끝나면 transform 해제
+    // (opacity는 inline 1로 유지 → gsap-on .anim{opacity:0} CSS를 덮어씀)
+    function reveal(el, def, dur) {
+      if (!el) return;
+      var f = FROM[def] || FROM.up;
+      var to = { opacity: 1, duration: dur || DUR, ease: 'power3.out', clearProps: 'transform' };
+      if ('x' in f)      to.x = 0;
+      if ('y' in f)      to.y = 0;
+      if ('rotate' in f) to.rotate = 0;
+      if ('scale' in f)  to.scale = 1;
+      gsap.fromTo(el, f, to);
+    }
+
+    // 1) 헤더 아래 STORY 타이틀 — 로드 시 등장
+    gsap.fromTo('.story-head .anim',
+      { y: 38, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.3, ease: 'power3.out', stagger: .28, delay: .1, clearProps: 'transform' });
+
+    // 2) 포스터 배경 패널
+    var poster = document.getElementById('poster');
+    ScrollTrigger.create({ trigger: poster, start: 'top 78%', once: true,
+      onEnter: function () { reveal(poster, 'bg', 1.5); } });
+
+    // 3) 포스터 내부 레이어 — 각 요소가 화면 안으로 충분히 들어왔을 때 '하나씩' 천천히 등장
+    poster.querySelectorAll('.lyr.anim').forEach(function (el) {
+      var def = el.getAttribute('data-anim') || 'up';
+      ScrollTrigger.create({ trigger: el, start: 'top 70%', once: true,
+        onEnter: function () { reveal(el, def); } });
+    });
+
+    // 4) 열쇠 패널 시퀀스:
+    //    (지금 당신만의 이야기… 는 포스터 하단 요소라 스크롤상 이 패널보다 먼저 등장)
+    //    ① 카드(액자) 등장 → ② 열쇠가 왼쪽에서 슬라이드해 도착 → ③ 살짝 비틀 → ④ 카드 텍스트 생김
+    var keyPanel = document.querySelector('.key-panel');
+    var keyImg = document.querySelector('.key-img');
+    var keyText = document.querySelector('.key-text');
+    ScrollTrigger.create({ trigger: keyPanel, start: 'top 75%', once: true,
+      onEnter: function () {
+        reveal(keyPanel, 'up', 1.3);                       // ① 카드(액자) 등장
+        var tl = gsap.timeline({ delay: 0.45 });
+        tl.fromTo(keyImg, { x: -130, opacity: 0 },
+                          { x: 0, opacity: 1, duration: 1.3, ease: 'power3.out' });  // ② 왼쪽에서 도착
+        tl.to(keyImg, { rotate: -8, duration: 0.2,  ease: 'sine.inOut' });           // ③ 살짝 비틀고
+        tl.to(keyImg, { rotate: 0,  duration: 0.35, ease: 'sine.inOut' });           //    제자리로
+        tl.add(function () { reveal(keyText, 'appear', 1.1); }, '+=0.05');           // ④ 그 다음 텍스트 생김
+      } });
+
+    // 별: 스크롤 시 위에서부터 하나씩 떨어지듯 등장
+    var keyStars = gsap.utils.toArray('.key-stars svg');
+    ScrollTrigger.create({ trigger: '.key-stars', start: 'top 88%', once: true,
+      onEnter: function () {
+        keyStars.forEach(function (s, i) {
+          var op = parseFloat(getComputedStyle(s).getPropertyValue('--op')) || 1;
+          gsap.fromTo(s, { y: -16, opacity: 0 },
+            { y: 0, opacity: op, duration: .7, ease: 'power2.out', delay: i * 0.3, clearProps: 'transform' });
+        });
+      } });
+
+    window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+    ScrollTrigger.refresh();
+  })();
+  </script>
+<script>(function(){var b=document.getElementById("navBurger"),n=document.getElementById("navMenu");if(b&&n){b.addEventListener("click",function(){b.classList.toggle("on");n.classList.toggle("open");});}})();</script>
+</body>
+</html>

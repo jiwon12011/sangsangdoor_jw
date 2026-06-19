@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N8NXNNT6');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MST4P557TL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MST4P557TL');
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>상상의 문 — 제휴문의</title>
+
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root { --navy:#0a0e1c; --gold:#f2d7ac; --gold-d:#c8a863; --cream:#ece4d6; --muted:#9aa2bd;
+          --card:#10162e; --card-2:#0c1126; --line:rgba(200,168,99,.18); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--navy); color:var(--cream);
+         font-family:'Paperozi',"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif; overflow-x:hidden; }
+  img { display:block; -webkit-user-drag:none; user-select:none; }
+
+  /* ── 헤더 ── */
+  .topbar { position:sticky; top:0; z-index:100; height:78px; background:linear-gradient(180deg,#0c1124 0%,#080b18 100%);
+            border-bottom:1px solid var(--line); display:flex; align-items:center; padding:0 clamp(20px,4vw,56px); }
+  .topbar .brand { display:flex; align-items:center; flex:none; }
+  .topbar .brand img { height:40px; width:auto; }
+  .topbar nav { flex:1; display:flex; align-items:center; justify-content:center; gap:38px; }
+  .topbar nav a { position:relative; color:#d9d2c4; text-decoration:none; font-size:16px; font-weight:600; letter-spacing:1.5px; white-space:nowrap; transition:color .2s ease; }
+  .topbar nav a:hover, .topbar nav a.active { color:var(--gold); }
+  .topbar nav a.active { font-weight:700; }
+  .topbar nav a.active::before { content:""; position:absolute; left:50%; top:-14px; width:13px; height:13px; transform:translateX(-50%); background:url('img/story/header_star.webp') center/contain no-repeat; }
+  .topbar .qbtn { flex:none; display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 22px;
+                  border:1px solid rgba(200,168,99,.55); border-radius:6px; color:var(--gold); text-decoration:none;
+                  font-size:15px; font-weight:600; letter-spacing:1px; transition:background .2s,border-color .2s; }
+  .topbar .qbtn:hover { background:rgba(200,168,99,.12); border-color:var(--gold); }
+  .topbar .qbtn span { font-size:18px; }
+  .nav-burger{ display:none; flex-direction:column; gap:5px; align-items:center; justify-content:center; width:42px; height:42px; flex:none; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+  .nav-burger span{ width:20px; height:2px; background:var(--gold); border-radius:2px; transition:transform .25s, opacity .2s; }
+  .nav-burger.on span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-burger.on span:nth-child(2){ opacity:0; }
+  .nav-burger.on span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .topbar nav a.nav-cta{ display:none; }
+  @media (max-width:760px){
+    .topbar{ height:64px; padding:0 16px; justify-content:space-between; }
+    .nav-burger{ display:flex; }
+    .topbar > nav{ position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0;
+                   background:linear-gradient(180deg,#0c1124,#080b18); border-bottom:0; box-shadow:none;
+                   max-height:0; overflow:hidden; transition:max-height .32s ease; }
+    .topbar > nav.open{ max-height:400px; border-bottom:1px solid var(--line); box-shadow:0 14px 28px rgba(0,0,0,.45); }
+    .topbar nav a{ padding:15px 22px; border-top:1px solid rgba(255,255,255,.06); font-size:15px; letter-spacing:0; }
+    .topbar nav a:first-child{ border-top:0; }
+    .topbar nav a.active::before{ display:none; }
+    .topbar nav a.active{ color:var(--gold); }
+    .topbar nav a.nav-cta{ display:block; color:var(--gold); font-weight:700; background:rgba(200,168,99,.08); }
+    .topbar .qbtn{ display:none; }
+  }
+  @media (max-width:860px){ .topbar nav a{ } }
+
+  /* ── 배경 (단색) ── */
+  .page { position:relative; padding-bottom:clamp(60px,7vw,100px); background:var(--navy); }
+  .wrap { max-width:1240px; margin:0 auto; padding:0 clamp(20px,4vw,48px); }
+
+  /* ── 공통 서브 헤더 규격 ── */
+  .sub-head { padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,76px); max-width:620px; }
+  .sub-head .en { font-family:"Cormorant Garamond","Times New Roman",serif; font-size:clamp(44px,6vw,74px); font-weight:600; letter-spacing:.135em; line-height:1; color:var(--gold); }
+  .sub-head .kr { margin-top:clamp(20px,3vw,32px); font-size:clamp(20px,2.4vw,29px); font-weight:700; color:#f4eede; letter-spacing:.02em; }
+  .sub-head .desc { margin-top:14px; font-size:clamp(14px,1.5vw,16px); line-height:1.85; color:var(--muted); }
+
+  /* ── 2단: 안내 + 폼 ── */
+  .pt-grid { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(20px,3vw,40px); align-items:start; }
+  @media (max-width:880px){ .pt-grid{ grid-template-columns:1fr; } }
+
+  /* 좌: 제휴 유형 + 연락처 */
+  .types { display:flex; flex-direction:column; gap:14px; }
+  .type { background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:11px; padding:20px 22px; }
+  .type .ic { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px;
+              background:radial-gradient(circle at 35% 30%, rgba(200,168,99,.3), rgba(200,168,99,.06)); border:1px solid rgba(200,168,99,.4); margin-bottom:13px; }
+  .type h3 { font-size:16px; font-weight:700; color:#f0e8d6; margin-bottom:7px; }
+  .type p { font-size:13px; line-height:1.65; color:var(--muted); }
+  .contact-card { margin-top:6px; background:rgba(12,17,38,.6); border:1px solid var(--line); border-radius:11px; padding:20px 22px; }
+  .contact-card h3 { font-size:14px; color:var(--gold); margin-bottom:14px; font-weight:700; }
+  .contact-card .row { display:flex; gap:10px; font-size:13.5px; color:#cdd3e4; line-height:1.7; margin-bottom:8px; }
+  .contact-card .row:last-child { margin-bottom:0; }
+  .contact-card .row .lab { color:var(--gold-d); min-width:54px; }
+
+  /* 우: 폼 */
+  .form-card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:clamp(24px,3vw,36px); }
+  .form-card .fh { font-size:18px; font-weight:700; color:#f0e8d6; margin-bottom:22px; }
+  .field { margin-bottom:18px; }
+  .field label { display:block; font-size:13.5px; color:#cdd3e4; margin-bottom:8px; font-weight:600; }
+  .field label .req { color:var(--gold); margin-left:3px; }
+  .field input, .field select, .field textarea {
+    width:100%; background:var(--card-2); border:1px solid rgba(255,255,255,.1); border-radius:8px;
+    color:var(--cream); font-family:inherit; font-size:15px; padding:13px 15px; transition:border-color .2s; }
+  .field select { appearance:none; -webkit-appearance:none; cursor:pointer;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%23c8a863' stroke-width='1.6' fill='none'/></svg>");
+    background-repeat:no-repeat; background-position:right 15px center; padding-right:40px; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:var(--gold); }
+  .field input::placeholder, .field textarea::placeholder { color:#5e647c; }
+  .field textarea { resize:vertical; min-height:130px; line-height:1.65; }
+  .field-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:520px){ .field-row{ grid-template-columns:1fr; } }
+  .check { display:flex; align-items:flex-start; gap:11px; cursor:pointer; font-size:13px; color:#c2c8da; line-height:1.5; margin-top:4px; }
+  .check input { position:absolute; opacity:0; pointer-events:none; }
+  .check .box { flex:none; width:20px; height:20px; border:1px solid #4a5070; border-radius:5px; display:flex; align-items:center; justify-content:center; transition:all .15s; margin-top:1px; }
+  .check.on .box { background:var(--gold); border-color:var(--gold); }
+  .check.on .box::after { content:"✓"; color:#0a0e1c; font-size:13px; font-weight:800; }
+  .check a { color:var(--gold); text-decoration:underline; }
+  .submit { margin-top:22px; width:100%; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+            padding:17px; border:0; border-radius:8px; background:var(--gold); color:#0a0e1c; font-family:inherit;
+            font-size:16px; font-weight:700; cursor:pointer; transition:filter .2s; }
+  .submit:hover { filter:brightness(1.06); }
+  .submit span { font-size:18px; }
+  .msg { margin-top:14px; padding:13px 16px; border-radius:8px; font-size:13.5px; line-height:1.6; display:none; }
+  .msg.ok  { display:block; background:rgba(200,168,99,.12); border:1px solid rgba(200,168,99,.4); color:#f0e8d6; }
+  .msg.err { display:block; background:rgba(217,140,140,.12); border:1px solid rgba(217,140,140,.4); color:#f0d6d6; }
+  .msg b { color:var(--gold); }
+
+  /* ── FOOTER ── */
+  .footer { background:#0a0f24; color:#b9c0d6; padding:clamp(40px,5vw,72px) 20px clamp(28px,4vw,46px); }
+  .footer a { color:inherit; text-decoration:none; }
+  .footer-top { max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:16px 30px; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08); }
+  .footer-hours { display:flex; align-items:center; gap:14px; }
+  .footer-hours .clock { width:36px;height:36px;border:1px solid #c8a863;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex:none; }
+  .footer-hours .ft { font-size:13px; line-height:1.7; }
+  .br-mb { display: none; }
+  @media (max-width: 620px) { .br-mb { display: inline; } }
+  /* 모바일에서만 숨기는 구분자(·) — 데스크톱은 한 줄 유지 */
+  .sep-mb { display: inline; }
+  @media (max-width: 620px) { .sep-mb { display: none; } }
+  .footer-hours .ft b { color:#e8dcc0; font-weight:600; }
+  .footer-nav { margin-left:auto; display:flex; gap:22px; flex-wrap:wrap; font-size:13px; }
+  .footer-nav a:hover { color:var(--gold); }
+  .footer-main { max-width:1280px; margin:clamp(24px,3vw,38px) auto 0; display:flex; flex-wrap:wrap; gap:30px 50px; align-items:flex-start; }
+  .footer-brand { min-width:190px; }
+  .footer-brand img { width:138px; height:auto; }
+  .footer-brand p { margin-top:10px; font-size:12px; color:#7c84a0; letter-spacing:.05em; }
+  .footer-stores { display:grid; grid-template-columns:repeat(2,minmax(210px,1fr)); gap:4px 40px; flex:1; }
+  .footer-stores div { font-size:12.5px; line-height:1.95; color:#9aa2bd; }
+  .footer-stores b { color:#c3cae0; font-weight:600; }
+  .footer-social { display:flex; gap:10px; }
+  .footer-social a { width:34px;height:34px;border-radius:50%; background:rgba(255,255,255,.08); display:flex;align-items:center;justify-content:center; font-size:12px; color:#cfd5e6; }
+  .footer-social a:hover { background:var(--gold); color:#0a0f24; }
+  .footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
+  @media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
+</style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="topbar">
+    <a class="brand" href="index.html"><img src="img/main/logo.webp" alt="상상의문 ESCAPE ROOM" /></a>
+    <nav id="navMenu">
+      <a href="story.html">상상의 문</a>
+      <a href="themes.html">테마</a>
+      <a href="reserve.html">예약</a>
+      <a href="location.html">매장안내</a>
+      <a href="notice.html">공지</a>
+      <a href="check.html" class="nav-cta">예약 확인 →</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" type="button" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    <a class="qbtn" href="check.html">예약 확인 <span>→</span></a>
+  </header>
+
+  <section class="page">
+    <div class="wrap">
+
+      <div class="sub-head">
+        <h1 class="en">PARTNERSHIP</h1>
+        <p class="kr">상상의 문과 함께하세요</p>
+        <p class="desc">신규 지점·콘텐츠·단체·브랜드 제휴를 환영합니다.<br>아래 양식으로 문의해 주시면 담당자가 빠르게 연락드립니다.</p>
+      </div>
+
+      <div class="pt-grid">
+        <!-- 좌 -->
+        <div>
+          <div class="types">
+            <div class="type">
+              <div class="ic">🏢</div>
+              <h3>가맹·신규 지점 제휴</h3>
+              <p>상상의 문 브랜드로 매장을 운영하고 싶으신 분들을 위한 가맹·창업 상담입니다.</p>
+            </div>
+            <div class="type">
+              <div class="ic">🎭</div>
+              <h3>콘텐츠·테마 제휴</h3>
+              <p>방탈출 테마, IP, 굿즈 등 콘텐츠 공동 개발 및 라이선스 제휴 제안.</p>
+            </div>
+            <div class="type">
+              <div class="ic">👥</div>
+              <h3>단체·기업 예약</h3>
+              <p>워크숍, 회식, MT, 학교 단위 대관 등 10인 이상 단체 예약 문의.</p>
+            </div>
+            <div class="type">
+              <div class="ic">📢</div>
+              <h3>광고·마케팅 제휴</h3>
+              <p>협찬, 촬영 장소 대여, 브랜드 컬래버레이션 및 미디어 제휴.</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>직접 문의</h3>
+            <div class="row"><span class="lab">이메일</span><span>imaginarydoor@yologuys.com</span></div>
+            <div class="row"><span class="lab">대표번호</span><span>02-765-7771 (평일 12:00–19:00)</span></div>
+            <div class="row"><span class="lab">담당</span><span>제휴·사업개발팀</span></div>
+          </div>
+        </div>
+
+        <!-- 우: 폼 -->
+        <div class="form-card">
+          <div class="fh">제휴 문의하기</div>
+
+          <div class="field">
+            <label>제휴 유형<span class="req">*</span></label>
+            <select id="fType">
+              <option value="">유형을 선택해주세요</option>
+              <option>가맹·신규 지점 제휴</option>
+              <option>콘텐츠·테마 제휴</option>
+              <option>단체·기업 예약</option>
+              <option>광고·마케팅 제휴</option>
+              <option>기타</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label>이름 / 담당자명<span class="req">*</span></label>
+              <input type="text" id="fName" placeholder="홍길동" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label>회사 / 단체명 (선택)</label>
+              <input type="text" id="fCompany" placeholder="상호 또는 단체명" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label>연락처<span class="req">*</span></label>
+              <input type="tel" id="fPhone" placeholder="010-0000-0000" autocomplete="tel" inputmode="numeric" />
+            </div>
+            <div class="field">
+              <label>이메일<span class="req">*</span></label>
+              <input type="email" id="fEmail" placeholder="example@email.com" autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>문의 내용<span class="req">*</span></label>
+            <textarea id="fMsg" placeholder="제휴 제안 내용을 자유롭게 작성해 주세요. (희망 지역·일정·예산 등을 함께 적어주시면 빠른 상담이 가능합니다.)"></textarea>
+          </div>
+
+          <label class="check" id="chkAgree"><input type="checkbox"><span class="box"></span><span>[필수] <a href="privacy.html" target="_blank">개인정보 수집·이용</a>에 동의합니다. (문의 응대 목적, 1년 보관)</span></label>
+
+          <button class="submit" id="sendBtn">문의 보내기 <span>→</span></button>
+          <div class="msg" id="msg"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-hours">
+        <span class="clock">&#128337;</span>
+        <span class="ft"><b>운영 시간</b> &nbsp; 평일 12:00 - 23:00<span class="sep-mb"> &nbsp;·&nbsp; </span><br class="br-mb">주말 및 공휴일 10:00 - 23:00<br>연중무휴 (설날, 추석 당일 제외)</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="notice.html">공지사항</a>
+        <a href="check.html">예약확인</a>
+        <a href="partnership.html">제휴문의</a>
+        <a href="privacy.html">개인정보취급방침</a>
+      </nav>
+    </div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/main/logo.webp" alt="상상의 문" />
+        <p>상상 그 이상의 공간</p>
+      </div>
+      <div class="footer-stores">
+        <div><b>대학로점</b> 02-765-7771<br>서울특별시 종로구 창경궁로34길 18-5, 지하3층</div>
+        <div><b>분당서현점</b> 031-708-1777<br>경기도 성남시 분당구 황새울로342번길 11 금호리빙스텔 지하1층</div>
+        <div><b>광주점</b> 062-226-1126<br>광주광역시 동구 충장로 80-5, 6층</div>
+        <div><b>수원점</b> 010-4397-3057<br>경기도 수원시 팔달구 인계로138번길 44, 4층</div>
+        <div><b>부평점</b> 010-3242-3218<br>인천광역시 부평구 시장로12번길 7 보광빌딩 4층</div>
+        <div><b>수원2호점</b> 010-9360-4148<br>경기도 수원시 팔달구 효원로249번길 46-18 3층</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>COPYRIGHT ⓒ 2026 상상의문. All right reserved. / created by TEAM 1</span>
+      <span>이메일 imaginarydoor@yologuys.com</span>
+      <a href="admin.html" style="color:inherit;opacity:.55">관리자</a>
+    </div>
+  </footer>
+
+  <script>
+    const chk = document.getElementById("chkAgree");
+    chk.addEventListener("click",()=>chk.classList.toggle("on", chk.querySelector("input").checked));
+    document.getElementById("fPhone").addEventListener("input",e=>{
+      let v=e.target.value.replace(/\D/g,"").slice(0,11);
+      if(v.length<4) e.target.value=v;
+      else if(v.length<8) e.target.value=v.slice(0,3)+"-"+v.slice(3);
+      else e.target.value=v.slice(0,3)+"-"+v.slice(3,7)+"-"+v.slice(7);
+    });
+    const msg=document.getElementById("msg");
+    document.getElementById("sendBtn").addEventListener("click",()=>{
+      msg.className="msg";
+      const type=document.getElementById("fType").value;
+      const name=document.getElementById("fName").value.trim();
+      const phone=document.getElementById("fPhone").value.trim();
+      const email=document.getElementById("fEmail").value.trim();
+      const body=document.getElementById("fMsg").value.trim();
+      if(!type){ msg.className="msg err"; msg.textContent="제휴 유형을 선택해주세요."; return; }
+      if(!name){ msg.className="msg err"; msg.textContent="이름을 입력해주세요."; return; }
+      if(phone.replace(/\D/g,"").length<10){ msg.className="msg err"; msg.textContent="연락처를 정확히 입력해주세요."; return; }
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ msg.className="msg err"; msg.textContent="이메일을 정확히 입력해주세요."; return; }
+      if(body.length<5){ msg.className="msg err"; msg.textContent="문의 내용을 입력해주세요."; return; }
+      if(!chk.querySelector("input").checked){ msg.className="msg err"; msg.textContent="개인정보 수집·이용에 동의해주세요."; return; }
+      msg.className="msg ok";
+      msg.innerHTML=`<b>${name}</b>님, 제휴 문의가 정상 접수되었습니다.<br>입력하신 연락처(${phone})와 이메일로 영업일 기준 1~2일 내 회신드리겠습니다.<br><span style="color:#9aa2bd">※ 데모 환경으로 실제 전송되지 않으며, 운영 시 메일 시스템과 연동됩니다.</span>`;
+      ["fType","fName","fCompany","fPhone","fEmail","fMsg"].forEach(id=>document.getElementById(id).value="");
+      chk.classList.remove("on"); chk.querySelector("input").checked=false;
+      msg.scrollIntoView({block:"center",behavior:"smooth"});
+    });
+  </script>
+
+<script>(function(){var b=document.getElementById("navBurger"),n=document.getElementById("navMenu");if(b&&n){b.addEventListener("click",function(){b.classList.toggle("on");n.classList.toggle("open");});}})();</script>
+</body>
+</html>

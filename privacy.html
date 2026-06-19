@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N8NXNNT6');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MST4P557TL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MST4P557TL');
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>상상의 문 — 개인정보취급방침</title>
+
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root { --navy:#0a0e1c; --gold:#f2d7ac; --gold-d:#c8a863; --cream:#ece4d6; --muted:#9aa2bd;
+          --card:#10162e; --card-2:#0c1126; --line:rgba(200,168,99,.18); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--navy); color:var(--cream);
+         font-family:'Paperozi',"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif; overflow-x:hidden; }
+  img { display:block; -webkit-user-drag:none; user-select:none; }
+
+  /* ── 헤더 ── */
+  .topbar { position:sticky; top:0; z-index:100; height:78px; background:linear-gradient(180deg,#0c1124 0%,#080b18 100%);
+            border-bottom:1px solid var(--line); display:flex; align-items:center; padding:0 clamp(20px,4vw,56px); }
+  .topbar .brand { display:flex; align-items:center; flex:none; }
+  .topbar .brand img { height:40px; width:auto; }
+  .topbar nav { flex:1; display:flex; align-items:center; justify-content:center; gap:38px; }
+  .topbar nav a { position:relative; color:#d9d2c4; text-decoration:none; font-size:16px; font-weight:600; letter-spacing:1.5px; white-space:nowrap; transition:color .2s ease; }
+  .topbar nav a:hover, .topbar nav a.active { color:var(--gold); }
+  .topbar nav a.active { font-weight:700; }
+  .topbar nav a.active::before { content:""; position:absolute; left:50%; top:-14px; width:13px; height:13px; transform:translateX(-50%); background:url('img/story/header_star.webp') center/contain no-repeat; }
+  .topbar .qbtn { flex:none; display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 22px;
+                  border:1px solid rgba(200,168,99,.55); border-radius:6px; color:var(--gold); text-decoration:none;
+                  font-size:15px; font-weight:600; letter-spacing:1px; transition:background .2s,border-color .2s; }
+  .topbar .qbtn:hover { background:rgba(200,168,99,.12); border-color:var(--gold); }
+  .topbar .qbtn span { font-size:18px; }
+  .nav-burger{ display:none; flex-direction:column; gap:5px; align-items:center; justify-content:center; width:42px; height:42px; flex:none; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+  .nav-burger span{ width:20px; height:2px; background:var(--gold); border-radius:2px; transition:transform .25s, opacity .2s; }
+  .nav-burger.on span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-burger.on span:nth-child(2){ opacity:0; }
+  .nav-burger.on span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .topbar nav a.nav-cta{ display:none; }
+  @media (max-width:760px){
+    .topbar{ height:64px; padding:0 16px; justify-content:space-between; }
+    .nav-burger{ display:flex; }
+    .topbar > nav{ position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0;
+                   background:linear-gradient(180deg,#0c1124,#080b18); border-bottom:0; box-shadow:none;
+                   max-height:0; overflow:hidden; transition:max-height .32s ease; }
+    .topbar > nav.open{ max-height:400px; border-bottom:1px solid var(--line); box-shadow:0 14px 28px rgba(0,0,0,.45); }
+    .topbar nav a{ padding:15px 22px; border-top:1px solid rgba(255,255,255,.06); font-size:15px; letter-spacing:0; }
+    .topbar nav a:first-child{ border-top:0; }
+    .topbar nav a.active::before{ display:none; }
+    .topbar nav a.active{ color:var(--gold); }
+    .topbar nav a.nav-cta{ display:block; color:var(--gold); font-weight:700; background:rgba(200,168,99,.08); }
+    .topbar .qbtn{ display:none; }
+  }
+  @media (max-width:860px){ .topbar nav a{ } }
+
+  /* ── 배경 (단색) ── */
+  .page { position:relative; padding-bottom:clamp(60px,7vw,100px); background:var(--navy); }
+  .wrap { max-width:1240px; margin:0 auto; padding:0 clamp(20px,4vw,48px); }
+
+  /* ── 공통 서브 헤더 규격 ── */
+  .sub-head { padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,76px); max-width:620px; }
+  .sub-head .en { font-family:"Cormorant Garamond","Times New Roman",serif; font-size:clamp(44px,6vw,74px); font-weight:600; letter-spacing:.135em; line-height:1; color:var(--gold); }
+  .sub-head .kr { margin-top:clamp(20px,3vw,32px); font-size:clamp(20px,2.4vw,29px); font-weight:700; color:#f4eede; letter-spacing:.02em; }
+  .sub-head .desc { margin-top:14px; font-size:clamp(14px,1.5vw,16px); line-height:1.85; color:var(--muted); }
+
+  /* ── 본문 2단 (목차 + 내용) ── */
+  .pv-grid { display:grid; grid-template-columns:220px minmax(0,1fr); gap:clamp(24px,4vw,56px); align-items:start; }
+  @media (max-width:880px){ .pv-grid{ grid-template-columns:1fr; } }
+
+  /* 목차 (sticky) */
+  .toc { position:sticky; top:96px; background:rgba(12,17,38,.55); border:1px solid var(--line); border-radius:11px; padding:20px; }
+  @media (max-width:880px){ .toc{ position:static; } }
+  .toc h4 { font-size:12px; color:var(--gold-d); letter-spacing:.1em; margin-bottom:14px; text-transform:uppercase; }
+  .toc ol { list-style:none; counter-reset:t; display:flex; flex-direction:column; gap:9px; }
+  .toc li { counter-increment:t; }
+  .toc a { display:flex; gap:9px; font-size:13px; color:#aeb4c9; text-decoration:none; line-height:1.4; transition:color .2s; }
+  .toc a::before { content:counter(t,decimal-leading-zero); color:var(--gold-d); font-family:"Cormorant Garamond",serif; font-size:13px; flex:none; }
+  .toc a:hover { color:var(--gold); }
+
+  /* 본문 */
+  .pv-body { max-width:820px; }
+  .pv-intro { font-size:14px; line-height:1.95; color:#c2c8da; padding-bottom:26px; margin-bottom:30px; border-bottom:1px solid var(--line); }
+  .pv-intro .eff { margin-top:14px; font-size:12.5px; color:var(--muted); }
+  .pv-intro .eff b { color:var(--gold-d); }
+  .art { padding:26px 0; border-bottom:1px solid rgba(255,255,255,.06); scroll-margin-top:96px; }
+  .art:last-child { border-bottom:0; }
+  .art h2 { font-size:17px; font-weight:700; color:#f0e8d6; margin-bottom:16px; display:flex; gap:11px; align-items:baseline; }
+  .art h2 .n { font-family:"Cormorant Garamond",serif; color:var(--gold-d); font-size:16px; flex:none; }
+  .art p { font-size:13.5px; line-height:1.9; color:#c2c8da; margin-bottom:12px; }
+  .art p:last-child { margin-bottom:0; }
+  .art ul { list-style:none; display:flex; flex-direction:column; gap:9px; margin:6px 0 12px; }
+  .art li { display:flex; gap:10px; font-size:13.5px; line-height:1.75; color:#c2c8da; }
+  .art li::before { content:""; flex:none; width:5px; height:5px; margin-top:9px; border-radius:50%; background:var(--gold-d); }
+  .art b { color:#e8e2d3; font-weight:600; }
+  /* 표 */
+  .ptable { width:100%; border-collapse:collapse; margin:8px 0 14px; font-size:13px; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .ptable th, .ptable td { padding:12px 14px; text-align:left; border-bottom:1px solid rgba(255,255,255,.06); border-right:1px solid rgba(255,255,255,.05); vertical-align:top; line-height:1.6; }
+  .ptable th { background:var(--card-2); color:var(--gold); font-weight:700; }
+  .ptable td { color:#c2c8da; }
+  .ptable tr:last-child td { border-bottom:0; }
+  .ptable th:last-child, .ptable td:last-child { border-right:0; }
+  .callout { background:rgba(12,17,38,.6); border:1px solid var(--line); border-left:3px solid var(--gold-d); border-radius:8px; padding:16px 18px; margin:8px 0 12px; }
+  .callout .lab { font-size:12px; color:var(--gold-d); margin-bottom:8px; font-weight:700; }
+  .callout .v { font-size:13.5px; line-height:1.8; color:#d2d7e4; }
+  .callout .v b { color:var(--gold); }
+
+  /* ── FOOTER ── */
+  .footer { background:#0a0f24; color:#b9c0d6; padding:clamp(40px,5vw,72px) 20px clamp(28px,4vw,46px); }
+  .footer a { color:inherit; text-decoration:none; }
+  .footer-top { max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:16px 30px; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08); }
+  .footer-hours { display:flex; align-items:center; gap:14px; }
+  .footer-hours .clock { width:36px;height:36px;border:1px solid #c8a863;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex:none; }
+  .footer-hours .ft { font-size:13px; line-height:1.7; }
+  .br-mb { display: none; }
+  @media (max-width: 620px) { .br-mb { display: inline; } }
+  /* 모바일에서만 숨기는 구분자(·) — 데스크톱은 한 줄 유지 */
+  .sep-mb { display: inline; }
+  @media (max-width: 620px) { .sep-mb { display: none; } }
+  .footer-hours .ft b { color:#e8dcc0; font-weight:600; }
+  .footer-nav { margin-left:auto; display:flex; gap:22px; flex-wrap:wrap; font-size:13px; }
+  .footer-nav a:hover { color:var(--gold); }
+  .footer-main { max-width:1280px; margin:clamp(24px,3vw,38px) auto 0; display:flex; flex-wrap:wrap; gap:30px 50px; align-items:flex-start; }
+  .footer-brand { min-width:190px; }
+  .footer-brand img { width:138px; height:auto; }
+  .footer-brand p { margin-top:10px; font-size:12px; color:#7c84a0; letter-spacing:.05em; }
+  .footer-stores { display:grid; grid-template-columns:repeat(2,minmax(210px,1fr)); gap:4px 40px; flex:1; }
+  .footer-stores div { font-size:12.5px; line-height:1.95; color:#9aa2bd; }
+  .footer-stores b { color:#c3cae0; font-weight:600; }
+  .footer-social { display:flex; gap:10px; }
+  .footer-social a { width:34px;height:34px;border-radius:50%; background:rgba(255,255,255,.08); display:flex;align-items:center;justify-content:center; font-size:12px; color:#cfd5e6; }
+  .footer-social a:hover { background:var(--gold); color:#0a0f24; }
+  .footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
+  @media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
+</style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="topbar">
+    <a class="brand" href="index.html"><img src="img/main/logo.webp" alt="상상의문 ESCAPE ROOM" /></a>
+    <nav id="navMenu">
+      <a href="story.html">상상의 문</a>
+      <a href="themes.html">테마</a>
+      <a href="reserve.html">예약</a>
+      <a href="location.html">매장안내</a>
+      <a href="notice.html">공지</a>
+      <a href="check.html" class="nav-cta">예약 확인 →</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" type="button" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    <a class="qbtn" href="check.html">예약 확인 <span>→</span></a>
+  </header>
+
+  <section class="page">
+    <div class="wrap">
+
+      <div class="sub-head">
+        <h1 class="en">PRIVACY</h1>
+        <p class="kr">개인정보취급방침</p>
+        <p class="desc">상상의 문은 이용자의 개인정보를 소중히 여기며<br>관련 법령에 따라 안전하게 관리합니다.</p>
+      </div>
+
+      <div class="pv-grid">
+        <!-- 목차 -->
+        <nav class="toc">
+          <h4>목차</h4>
+          <ol>
+            <li><a href="#a1">수집하는 개인정보 항목</a></li>
+            <li><a href="#a2">개인정보의 수집·이용 목적</a></li>
+            <li><a href="#a3">보유 및 이용 기간</a></li>
+            <li><a href="#a4">제3자 제공</a></li>
+            <li><a href="#a5">처리 위탁</a></li>
+            <li><a href="#a6">이용자의 권리</a></li>
+            <li><a href="#a7">파기 절차 및 방법</a></li>
+            <li><a href="#a8">안전성 확보 조치</a></li>
+            <li><a href="#a9">개인정보 보호책임자</a></li>
+          </ol>
+        </nav>
+
+        <!-- 본문 -->
+        <div class="pv-body">
+          <div class="pv-intro">
+            ㈜상상의문(이하 ‘회사’)은 「개인정보 보호법」 등 관련 법령을 준수하며, 이용자의 개인정보를 보호하고 이와 관련한 고충을 신속하게 처리할 수 있도록 본 개인정보취급방침을 수립·공개합니다. 회사는 이용자가 안심하고 서비스를 이용할 수 있도록 최선을 다하고 있습니다.
+            <div class="eff"><b>시행일자</b> 2026년 1월 1일 &nbsp;·&nbsp; <b>최종 개정일</b> 2026년 5월 1일</div>
+          </div>
+
+          <div class="art" id="a1">
+            <h2><span class="n">01</span> 수집하는 개인정보 항목</h2>
+            <p>회사는 예약, 문의, 서비스 제공을 위해 아래와 같은 최소한의 개인정보를 수집합니다.</p>
+            <table class="ptable">
+              <tr><th>구분</th><th>수집 항목</th></tr>
+              <tr><td>예약 시 (필수)</td><td>예약자명, 연락처(휴대전화번호)</td></tr>
+              <tr><td>예약 시 (선택)</td><td>이메일, 요청사항</td></tr>
+              <tr><td>제휴·문의 시</td><td>이름/담당자명, 회사·단체명, 연락처, 이메일, 문의 내용</td></tr>
+              <tr><td>결제 시</td><td>결제 수단 정보(결제 대행사를 통해 처리), 결제 내역</td></tr>
+              <tr><td>자동 수집</td><td>접속 IP, 쿠키, 서비스 이용 기록, 기기 정보</td></tr>
+            </table>
+            <p>※ 회사는 민감정보(사상·신념, 건강 등)를 수집하지 않으며, 만 14세 미만 아동의 개인정보는 법정대리인 동의 없이 수집하지 않습니다.</p>
+          </div>
+
+          <div class="art" id="a2">
+            <h2><span class="n">02</span> 개인정보의 수집·이용 목적</h2>
+            <ul>
+              <li>예약 접수·확인·변경·취소 및 방문 안내</li>
+              <li>본인 확인, 노쇼 방지 및 예약 관련 연락</li>
+              <li>결제 처리 및 환불 등 정산</li>
+              <li>제휴·단체 문의에 대한 상담 및 회신</li>
+              <li>공지·이벤트 안내 (마케팅 수신 동의자에 한함)</li>
+              <li>서비스 개선, 부정 이용 방지 및 통계 분석</li>
+            </ul>
+          </div>
+
+          <div class="art" id="a3">
+            <h2><span class="n">03</span> 보유 및 이용 기간</h2>
+            <p>회사는 원칙적으로 개인정보의 수집·이용 목적이 달성되면 지체 없이 파기합니다. 단, 관련 법령에 따라 다음과 같이 보존합니다.</p>
+            <table class="ptable">
+              <tr><th>보존 항목</th><th>근거 법령</th><th>기간</th></tr>
+              <tr><td>계약·청약철회 기록</td><td>전자상거래법</td><td>5년</td></tr>
+              <tr><td>대금결제·재화공급 기록</td><td>전자상거래법</td><td>5년</td></tr>
+              <tr><td>소비자 불만·분쟁처리 기록</td><td>전자상거래법</td><td>3년</td></tr>
+              <tr><td>접속 로그 기록</td><td>통신비밀보호법</td><td>3개월</td></tr>
+              <tr><td>제휴·문의 내역</td><td>내부 방침</td><td>1년</td></tr>
+            </table>
+          </div>
+
+          <div class="art" id="a4">
+            <h2><span class="n">04</span> 개인정보의 제3자 제공</h2>
+            <p>회사는 이용자의 개인정보를 본 방침에 명시한 범위를 넘어 제3자에게 제공하지 않습니다. 다만 다음의 경우는 예외로 합니다.</p>
+            <ul>
+              <li>이용자가 사전에 동의한 경우</li>
+              <li>법령의 규정에 의하거나, 수사 목적으로 법령에 정해진 절차에 따라 수사기관의 요구가 있는 경우</li>
+            </ul>
+          </div>
+
+          <div class="art" id="a5">
+            <h2><span class="n">05</span> 개인정보 처리의 위탁</h2>
+            <p>회사는 원활한 서비스 제공을 위해 아래와 같이 개인정보 처리 업무를 위탁할 수 있으며, 위탁 시 관련 법령에 따라 안전하게 관리되도록 필요한 사항을 규정합니다.</p>
+            <table class="ptable">
+              <tr><th>수탁업체</th><th>위탁 업무</th></tr>
+              <tr><td>결제대행(PG) 사</td><td>신용카드·간편결제 등 결제 처리</td></tr>
+              <tr><td>문자·알림 발송 대행사</td><td>예약 확인 및 안내 메시지 발송</td></tr>
+              <tr><td>클라우드 호스팅 사업자</td><td>서비스 운영을 위한 데이터 보관</td></tr>
+            </table>
+          </div>
+
+          <div class="art" id="a6">
+            <h2><span class="n">06</span> 이용자 및 법정대리인의 권리와 행사 방법</h2>
+            <p>이용자는 언제든지 자신의 개인정보에 대해 다음의 권리를 행사할 수 있습니다.</p>
+            <ul>
+              <li>개인정보 열람·정정·삭제 요청</li>
+              <li>개인정보 처리 정지 요청</li>
+              <li>수집·이용 동의 철회</li>
+            </ul>
+            <p>권리 행사는 개인정보 보호책임자에게 서면, 전화, 이메일로 요청하실 수 있으며, 회사는 지체 없이 조치합니다.</p>
+          </div>
+
+          <div class="art" id="a7">
+            <h2><span class="n">07</span> 개인정보의 파기 절차 및 방법</h2>
+            <ul>
+              <li><b>파기 절차</b> — 목적이 달성된 개인정보는 별도 DB로 옮겨져 내부 방침 및 관련 법령에 따라 일정 기간 보관 후 파기됩니다.</li>
+              <li><b>파기 방법</b> — 전자적 파일은 복구 불가능한 기술적 방법으로 삭제하며, 종이 문서는 분쇄하거나 소각합니다.</li>
+            </ul>
+          </div>
+
+          <div class="art" id="a8">
+            <h2><span class="n">08</span> 개인정보의 안전성 확보 조치</h2>
+            <ul>
+              <li>관리적 조치 — 내부관리계획 수립·시행, 임직원 정기 교육</li>
+              <li>기술적 조치 — 접근권한 관리, 접근통제시스템 설치, 개인정보의 암호화, 보안프로그램 설치</li>
+              <li>물리적 조치 — 전산실·자료보관실 등의 접근 통제</li>
+            </ul>
+          </div>
+
+          <div class="art" id="a9">
+            <h2><span class="n">09</span> 개인정보 보호책임자</h2>
+            <p>회사는 개인정보 처리에 관한 업무를 총괄하여 책임지고, 이용자의 불만 처리 및 피해 구제를 위하여 아래와 같이 보호책임자를 지정하고 있습니다.</p>
+            <div class="callout">
+              <div class="lab">개인정보 보호책임자</div>
+              <div class="v"><b>성명</b> 상상의문 운영팀 &nbsp;·&nbsp; <b>이메일</b> imaginarydoor@yologuys.com &nbsp;·&nbsp; <b>전화</b> 02-765-7771</div>
+            </div>
+            <p>기타 개인정보 침해에 대한 신고·상담이 필요하신 경우 개인정보침해신고센터(국번없이 118), 대검찰청 사이버수사과(1301), 경찰청 사이버수사국(182) 등으로 문의하실 수 있습니다.</p>
+            <p style="color:#7c84a0;font-size:12.5px;margin-top:6px">※ 본 방침은 데모용으로 작성된 예시이며, 실제 사업자 정보 및 법무 검토 후 정식 게시됩니다.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-hours">
+        <span class="clock">&#128337;</span>
+        <span class="ft"><b>운영 시간</b> &nbsp; 평일 12:00 - 23:00<span class="sep-mb"> &nbsp;·&nbsp; </span><br class="br-mb">주말 및 공휴일 10:00 - 23:00<br>연중무휴 (설날, 추석 당일 제외)</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="notice.html">공지사항</a>
+        <a href="check.html">예약확인</a>
+        <a href="partnership.html">제휴문의</a>
+        <a href="privacy.html">개인정보취급방침</a>
+      </nav>
+    </div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/main/logo.webp" alt="상상의 문" />
+        <p>상상 그 이상의 공간</p>
+      </div>
+      <div class="footer-stores">
+        <div><b>대학로점</b> 02-765-7771<br>서울특별시 종로구 창경궁로34길 18-5, 지하3층</div>
+        <div><b>분당서현점</b> 031-708-1777<br>경기도 성남시 분당구 황새울로342번길 11 금호리빙스텔 지하1층</div>
+        <div><b>광주점</b> 062-226-1126<br>광주광역시 동구 충장로 80-5, 6층</div>
+        <div><b>수원점</b> 010-4397-3057<br>경기도 수원시 팔달구 인계로138번길 44, 4층</div>
+        <div><b>부평점</b> 010-3242-3218<br>인천광역시 부평구 시장로12번길 7 보광빌딩 4층</div>
+        <div><b>수원2호점</b> 010-9360-4148<br>경기도 수원시 팔달구 효원로249번길 46-18 3층</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>COPYRIGHT ⓒ 2026 상상의문. All right reserved. / created by TEAM 1</span>
+      <span>이메일 imaginarydoor@yologuys.com</span>
+      <a href="admin.html" style="color:inherit;opacity:.55">관리자</a>
+    </div>
+  </footer>
+
+<script>(function(){var b=document.getElementById("navBurger"),n=document.getElementById("navMenu");if(b&&n){b.addEventListener("click",function(){b.classList.toggle("on");n.classList.toggle("open");});}})();</script>
+</body>
+</html>

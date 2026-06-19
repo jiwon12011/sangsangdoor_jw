@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N8NXNNT6');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MST4P557TL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MST4P557TL');
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>상상의 문 — THEMES</title>
+
+<!-- 공용 웹폰트 (Paperozi) -->
+<link rel="stylesheet" href="css/fonts.css" />
+<!-- 영문 타이틀용 세리프 (STORY 페이지와 동일) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --navy:   #0a0e1c;
+    --gold:   #f2d7ac;
+    --gold-d: #c8a863;
+    --cream:  #ece4d6;
+    --muted:  #9aa2bd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Paperozi', "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+  img { display: block; -webkit-user-drag: none; user-select: none; }
+
+  /* ══════════════ 상단 헤더 (STORY 페이지와 동일 위치/스타일) ══════════════ */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    height: 78px;
+    background: linear-gradient(180deg, #0c1124 0%, #080b18 100%);
+    border-bottom: 1px solid rgba(200,168,99,.18);
+    display: flex; align-items: center;
+    padding: 0 clamp(20px, 4vw, 56px);
+  }
+  .topbar .brand { display: flex; align-items: center; flex: none; }
+  .topbar .brand img { height: 40px; width: auto; }
+  .topbar nav {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    gap: 38px;
+  }
+  .topbar nav a {
+    position: relative;
+    color: #d9d2c4; text-decoration: none;
+    font-size: 16px; font-weight: 600; letter-spacing: 1.5px;
+    white-space: nowrap;
+    transition: color .2s ease;
+  }
+  .topbar nav a:hover { color: var(--gold); }
+  .topbar nav a.active { color: var(--gold); font-weight: 700; }
+  .topbar nav a.active::before {
+    content: ""; position: absolute; left: 50%; top: -14px;
+    width: 13px; height: 13px; transform: translateX(-50%);
+    background: url('img/story/header_star.webp') center/contain no-repeat;
+  }
+  .topbar .qbtn {
+    flex: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 44px; padding: 0 22px;
+    border: 1px solid rgba(200,168,99,.55); border-radius: 6px;
+    color: var(--gold); text-decoration: none;
+    font-size: 15px; font-weight: 600; letter-spacing: 1px;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .topbar .qbtn:hover { background: rgba(200,168,99,.12); border-color: var(--gold); }
+  .topbar .qbtn span { font-size: 18px; }
+
+  .nav-burger{ display:none; flex-direction:column; gap:5px; align-items:center; justify-content:center; width:42px; height:42px; flex:none; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+  .nav-burger span{ width:20px; height:2px; background:var(--gold); border-radius:2px; transition:transform .25s, opacity .2s; }
+  .nav-burger.on span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-burger.on span:nth-child(2){ opacity:0; }
+  .nav-burger.on span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .topbar nav a.nav-cta{ display:none; }
+  @media (max-width:760px){
+    .topbar{ height:64px; padding:0 16px; justify-content:space-between; }
+    .nav-burger{ display:flex; }
+    .topbar > nav{ position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0;
+                   background:linear-gradient(180deg,#0c1124,#080b18); border-bottom:0; box-shadow:none;
+                   max-height:0; overflow:hidden; transition:max-height .32s ease; }
+    .topbar > nav.open{ max-height:400px; border-bottom:1px solid var(--line); box-shadow:0 14px 28px rgba(0,0,0,.45); }
+    .topbar nav a{ padding:15px 22px; border-top:1px solid rgba(255,255,255,.06); font-size:15px; letter-spacing:0; }
+    .topbar nav a:first-child{ border-top:0; }
+    .topbar nav a.active::before{ display:none; }
+    .topbar nav a.active{ color:var(--gold); }
+    .topbar nav a.nav-cta{ display:block; color:var(--gold); font-weight:700; background:rgba(200,168,99,.08); }
+    .topbar .qbtn{ display:none; }
+  }
+
+  /* ══════════════ 테마 본문 (sub_bgi.png 통배경) ══════════════ */
+  .themes {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(10,14,28,0) 56%, rgba(10,14,28,.85) 80%, var(--navy) 92%),
+      url('img/sub_bgi.webp') top center / 100% auto no-repeat,
+      var(--navy);
+    padding-bottom: clamp(80px, 10vw, 140px);
+  }
+
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+
+  /* THEMES 타이틀 (서브페이지 공통 헤더 규격) */
+  .themes-head { padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,76px); max-width:620px; }
+  .themes-head .en { font-family:"Cormorant Garamond","Times New Roman",serif; font-size:clamp(44px,6vw,74px); font-weight:600; letter-spacing:.135em; line-height:1; color:var(--gold); }
+  .themes-head .kr { margin-top:clamp(20px,3vw,32px); font-size:clamp(20px,2.4vw,29px); font-weight:700; color:#f4eede; letter-spacing:.02em; }
+  .themes-head .desc { margin-top:14px; font-size:clamp(14px,1.5vw,16px); line-height:1.85; color:var(--muted); }
+
+  /* 지점 탭 */
+  .branch-tabs {
+    display: flex; flex-wrap: wrap; gap: clamp(20px, 3vw, 44px);
+    padding-bottom: 14px; margin-bottom: clamp(34px, 4vw, 52px);
+    border-bottom: 1px solid rgba(200,168,99,.16);
+  }
+  .branch-tabs button {
+    background: none; border: 0; cursor: pointer;
+    font-family: inherit; font-size: clamp(16px, 1.8vw, 20px); font-weight: 700;
+    letter-spacing: .02em; color: var(--muted); padding: 4px 2px;
+    position: relative; transition: color .2s ease;
+  }
+  .branch-tabs button:hover { color: #d9d2c4; }
+  .branch-tabs button.active { color: var(--gold); }
+  .branch-tabs button.active::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -15px;
+    height: 2px; background: var(--gold-d);
+  }
+
+  /* 테마 패널 */
+  .panel {
+    position: relative;
+    background: rgba(10, 14, 32, 0.62);
+    border: 1px solid rgba(200,168,99,.18);
+    border-radius: 8px;
+    padding: clamp(54px, 6vw, 72px) clamp(22px, 4vw, 56px) clamp(40px, 5vw, 56px);
+    box-shadow: 0 30px 70px rgba(0,0,0,.45);
+  }
+
+  /* 양피지 지점 라벨 (themes_title.png 사용) */
+  .branch-label {
+    position: absolute; top: -26px; left: clamp(20px, 4vw, 40px);
+    min-width: 168px; min-height: 64px;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 4px 30px 10px;
+    background: url('img/themes_title.webp') center / 100% 100% no-repeat;
+    color: #3a2c18; font-size: clamp(17px, 1.9vw, 21px); font-weight: 700;
+    letter-spacing: .02em; transform: rotate(-2deg);
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,.5));
+  }
+
+  /* 포스터 그리드 */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(22px, 3vw, 38px); }
+
+  .tcard { display: flex; flex-direction: column; }
+  .tframe {
+    position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+    border: 2px solid rgba(200,168,99,.45); border-radius: 4px;
+    background: #05070f; box-shadow: 0 12px 30px rgba(0,0,0,.55);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .8s ease;
+  }
+  .tcard:hover .tframe { transform: translateY(-8px); border-color: var(--gold); }
+  /* 메인에서 뽑힌 카드 강조: 둥근 모서리 따라가는 골드 글로우 + 둥둥 부유 애니메이션 */
+  @keyframes themePickFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  .tframe.is-picked {
+    border-color: var(--gold);
+    box-shadow:
+      0 0 0 2px rgba(242,215,172,.55),
+      0 0 42px rgba(242,215,172,.45),
+      0 18px 38px rgba(0,0,0,.5);
+    animation: themePickFloat 2.6s ease-in-out infinite;
+  }
+  .tframe img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .tcard:hover .tframe img { transform: scale(1.05); }
+  .tframe .genre {
+    position: absolute; top: 12px; left: 12px; z-index: 2;
+    background: rgba(5,7,15,.82); color: var(--gold);
+    font-size: 12px; letter-spacing: .03em; padding: 4px 12px; border-radius: 20px;
+    transition: opacity .25s ease;
+  }
+  .tcard:hover .tframe .genre { opacity: 0; }
+
+  /* 후버 상세정보 오버레이 (검정 반투명) */
+  .tinfo {
+    position: absolute; inset: 0; z-index: 3;
+    background: linear-gradient(180deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.82) 100%);
+    display: flex; flex-direction: column;
+    padding: clamp(18px, 2vw, 24px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  .tcard:hover .tinfo { opacity: 1; pointer-events: auto; }
+  /* 모바일/터치 기기: 카드를 탭하면 후버와 동일한 효과·상세정보를 표시 (.is-active 는 JS가 토글) */
+  .tcard.is-active .tframe { transform: translateY(-8px); border-color: var(--gold); }
+  .tcard.is-active .tframe img { transform: scale(1.05); }
+  .tcard.is-active .tframe .genre { opacity: 0; }
+  .tcard.is-active .tinfo { opacity: 1; pointer-events: auto; }
+  .tinfo .ti-genre { font-size: 12px; letter-spacing: .04em; color: var(--gold-d); margin-bottom: 8px; }
+  .tinfo .ti-name { font-size: clamp(17px, 1.7vw, 20px); font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+  .tinfo .ti-desc {
+    font-size: 13px; line-height: 1.7; color: #e3dccd; flex: 1;
+    overflow-y: auto;                /* 텍스트가 길면 호버 중 마우스 휠로 스크롤 */
+    overscroll-behavior: contain;    /* 끝에 닿아도 페이지로 스크롤 안 번지게 */
+    padding-right: 6px;              /* 스크롤바 공간 */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(200,168,99,.55) transparent;
+    word-break: keep-all;            /* 한글이 어절(공백) 단위에서만 줄바꿈 */
+    overflow-wrap: break-word;       /* 너무 긴 어절은 어쩔 수 없이 끊어줌 */
+  }
+  .tinfo .ti-desc::-webkit-scrollbar { width: 6px; }
+  .tinfo .ti-desc::-webkit-scrollbar-track { background: transparent; }
+  .tinfo .ti-desc::-webkit-scrollbar-thumb { background: rgba(200,168,99,.5); border-radius: 3px; }
+  .tinfo .ti-desc::-webkit-scrollbar-thumb:hover { background: rgba(200,168,99,.85); }
+  .tinfo .ti-meta {
+    margin: 14px 0; font-size: 13px; color: #cdd3e4;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .tinfo .ti-meta .ti-stars { color: var(--gold-d); letter-spacing: 2px; }
+  .tinfo .ti-meta .dot { opacity: .5; margin: 0 6px; }
+  .tinfo .ti-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 11px 14px; border: 1px solid rgba(200,168,99,.6); border-radius: 6px;
+    background: rgba(200,168,99,.08);
+    color: var(--gold); text-decoration: none; font-weight: 700; font-size: 14px;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .tinfo .ti-btn:hover { background: var(--gold); color: #0a0e1c; border-color: var(--gold); }
+
+  .tcap { padding: 16px 4px 0; text-align: center; }
+  .tcap .name { font-size: clamp(16px, 1.7vw, 20px); font-weight: 700; color: #f4eede; }
+  .tcap .stars { margin-top: 8px; color: var(--gold-d); letter-spacing: 3px; font-size: 15px; }
+  .tcap .meta { margin-top: 6px; font-size: 13.5px; color: var(--muted); }
+  .tcap .meta .dot { opacity: .5; margin: 0 7px; }
+
+  @media (max-width: 820px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+    .branch-tabs { gap: 16px; }
+  }
+
+  /* ══════════════ FOOTER (메인/STORY와 동일) ══════════════ */
+  .footer { background:#0a0f24; color:#b9c0d6; padding:clamp(40px,5vw,72px) 20px clamp(28px,4vw,46px); }
+  .footer a { color:inherit; text-decoration:none; }
+  .footer-top { max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:16px 30px; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08); }
+  .footer-hours { display:flex; align-items:center; gap:14px; }
+  .footer-hours .clock { width:36px;height:36px;border:1px solid #c8a863;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex:none; }
+  .footer-hours .ft { font-size:13px; line-height:1.7; }
+  .br-mb { display: none; }
+  @media (max-width: 620px) { .br-mb { display: inline; } }
+  /* 모바일에서만 숨기는 구분자(·) — 데스크톱은 한 줄 유지 */
+  .sep-mb { display: inline; }
+  @media (max-width: 620px) { .sep-mb { display: none; } }
+  .footer-hours .ft b { color:#e8dcc0; font-weight:600; }
+  .footer-nav { margin-left:auto; display:flex; gap:22px; flex-wrap:wrap; font-size:13px; }
+  .footer-nav a:hover { color:var(--gold); }
+  .footer-main { max-width:1280px; margin:clamp(24px,3vw,38px) auto 0; display:flex; flex-wrap:wrap; gap:30px 50px; align-items:flex-start; }
+  .footer-brand { min-width:190px; }
+  .footer-brand img { width:138px; height:auto; }
+  .footer-brand p { margin-top:10px; font-size:12px; color:#7c84a0; letter-spacing:.05em; }
+  .footer-stores { display:grid; grid-template-columns:repeat(2,minmax(210px,1fr)); gap:4px 40px; flex:1; }
+  .footer-stores div { font-size:12.5px; line-height:1.95; color:#9aa2bd; }
+  .footer-stores b { color:#c3cae0; font-weight:600; }
+  .footer-social { display:flex; gap:10px; }
+  .footer-social a { width:34px;height:34px;border-radius:50%; background:rgba(255,255,255,.08); display:flex;align-items:center;justify-content:center; font-size:12px; color:#cfd5e6; }
+  .footer-social a:hover { background:var(--gold); color:#0a0f24; }
+  .footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
+  @media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/themes-store.js"></script>
+</head>
+<body>
+
+  <!-- ── 헤더 ── -->
+  <header class="topbar">
+    <a class="brand" href="index.html"><img src="img/main/logo.webp" alt="상상의문 ESCAPE ROOM" /></a>
+    <nav id="navMenu">
+      <a href="story.html">상상의 문</a>
+      <a href="themes.html" class="active">테마</a>
+      <a href="reserve.html">예약</a>
+      <a href="location.html">매장안내</a>
+      <a href="notice.html">공지</a>
+      <a href="check.html" class="nav-cta">예약 확인 →</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" type="button" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    <a class="qbtn" href="check.html">예약 확인 <span>→</span></a>
+  </header>
+
+  <!-- ── 테마 본문 ── -->
+  <section class="themes">
+    <div class="wrap">
+
+      <!-- THEMES 타이틀 -->
+      <div class="themes-head">
+        <h1 class="en">THEMES</h1>
+        <p class="kr">상상의 문을 열어보세요</p>
+        <p class="desc">테마마다 다른 이야기와 공간.<br>당신의 상상을 현실로 만들 미스터리한 테마들을 소개합니다.</p>
+      </div>
+
+      <!-- 지점 탭 -->
+      <div class="branch-tabs" id="branchTabs">
+        <button class="active" data-branch="대학로점">대학로점</button>
+        <button data-branch="분당서현점">분당서현점</button>
+        <button data-branch="광주점">광주점</button>
+        <button data-branch="부평점">부평점</button>
+        <button data-branch="수원점">수원점</button>
+        <button data-branch="수원2호점">수원2호점</button>
+      </div>
+
+      <!-- 테마 패널 -->
+      <div class="panel">
+        <span class="branch-label" id="branchLabel">대학로점</span>
+        <div class="grid" id="grid"><!-- JS 렌더링 --></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-hours">
+        <span class="clock">&#128337;</span>
+        <span class="ft"><b>운영 시간</b> &nbsp; 평일 12:00 - 23:00<span class="sep-mb"> &nbsp;·&nbsp; </span><br class="br-mb">주말 및 공휴일 10:00 - 23:00<br>연중무휴 (설날, 추석 당일 제외)</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="notice.html">공지사항</a>
+        <a href="check.html">예약확인</a>
+        <a href="partnership.html">제휴문의</a>
+        <a href="privacy.html">개인정보취급방침</a>
+      </nav>
+    </div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/main/logo.webp" alt="상상의 문" />
+        <p>상상 그 이상의 공간</p>
+      </div>
+      <div class="footer-stores">
+        <div><b>대학로점</b> 02-765-7771<br>서울특별시 종로구 창경궁로34길 18-5, 지하3층</div>
+        <div><b>분당서현점</b> 031-708-1777<br>경기도 성남시 분당구 황새울로342번길 11 금호리빙스텔 지하1층</div>
+        <div><b>광주점</b> 062-226-1126<br>광주광역시 동구 충장로 80-5, 6층</div>
+        <div><b>수원점</b> 010-4397-3057<br>경기도 수원시 팔달구 인계로138번길 44, 4층</div>
+        <div><b>부평점</b> 010-3242-3218<br>인천광역시 부평구 시장로12번길 7 보광빌딩 4층</div>
+        <div><b>수원2호점</b> 010-9360-4148<br>경기도 수원시 팔달구 효원로249번길 46-18 3층</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>COPYRIGHT ⓒ 2026 상상의문. All right reserved. / created by TEAM 1</span>
+      <span>이메일 imaginarydoor@yologuys.com</span>
+      <a href="admin.html" style="color:inherit;opacity:.55">관리자</a>
+    </div>
+  </footer>
+
+  <!-- ── JS ── -->
+  <script>
+    // 지점별 테마 (themes-detail.md 기준) · poster = img/main/poster/{n}_a.webp · desc = 사이트 소개문
+    const P = "img/main/poster/";
+    const themeData = {
+      "대학로점": [
+        { name: "나이트워크", genre: "판타지", diff: 3, players: "2~6인", time: "100분", img: P+"10_a.webp", desc: "어두운 밤 속으로 발걸음을 내딛었다. <br> 그리고 한없이 걸었다. <br> 그 끝에서 한 목소리를 들었다." },
+        { name: "스포일러", genre: "미스터리", diff: 5, players: "2~6인", time: "85분", img: P+"1_a.webp", desc: "그들은 이미 알고 있었다. <br><br> ※ 고소공포증이 있는 경우 플레이에 지장이 있을 수 있습니다. <br> ※ 활동성이 높은 편이니 편한 복장을 추천드립니다. <br> ※ 초등학생 손님분들은 안전 문제로 이용이 <br> 불가합니다." },
+        { name: "경찰과 도둑", genre: "추리", diff: 3, players: "2~4인", time: "60분", img: P+"4_a.webp", desc: "이 사건의 주인공은 나야 <br> EP.1 경찰이야기 / EP.2 도둑이야기 <br> 같은 공간, 두 개의 시점. <br><br> ※ 첫 방문시에는 경찰이야기를, 다음 방문 시에는 할인된 가격에 도둑이야기를 체험하실 수 있습니다. <br> ※ 15세 미만의 청소년의 경우 보호자의 지도가 필요합니다. (폭력성,마약류등 소재)" },
+      ],
+      "분당서현점": [
+        { name: "시크릿 왕국의 스캔들 (감독판)", genre: "추리/잔혹동화", diff: 4, players: "2~6인", time: "90분", img: P+"7_a.webp", desc: "시크릿 왕국의 프린스 왕자와 새 왕자비를 <br> 소개하는 연회를 개최합니다. <br> 부디 참석하여 기쁜 날을 함께 맞이해 주시오. <br><br> ※ 15세 미만의 청소년의 경우 보호자의 지도를 필요로 합니다." },
+        { name: "HERE I AM", genre: "생존/탐험", diff: 3, players: "2~6인", time: "70분", img: P+"6_a.webp", desc: "으으... 나 살아있는건가? 목말라... <br> 낯선 곳에서 눈을 뜬 당신, <br> 살아남아 이곳을 빠져나가라." },
+        { name: "몽염 : 도망칠 수 없는 꿈", genre: "공포", diff: 4, players: "2~4인", time: "80분", img: P+"9_a.webp", desc: "나는 매일 꿈을 꾸었다. <br> 온통 어두운 곳에서 그녀가 날 바라보는 꿈. <br> 우리 사이엔 아무런 행동조차 오가지 않았다. <br> 그저 바라만 보고 있었다." },
+        { name: "역만", genre: "?", diff: 4, players: "2~6인", time: "90분", img: P+"11_a.webp", desc: "이곳에는 어떤 이야기도 없습니다." },
+        { name: "셔플월드", genre: "게임/판타지", diff: 3, players: "2~6인", time: "70분", img: P+"8_a.webp", desc: "평화로운 픽셀월드에 나타난 포탈들! <br> 용사님! 픽셀월드가 삼켜지고 있어! <br> 일어나봐 용사님!" },
+        { name: "전당포 조필두", genre: "스릴러", diff: 2, players: "2~6인", time: "60분", img: P+"5_a.webp", desc: "지루한 매일의 연속.. 조필두는 한숨을 쉬며 <br> 자신의 가게인 전당포로 향한다. <br><br>  ※ 워크인, 입문자를 위한 초심자용 테마입니다. <br> ※ 힌트를 쓰지 않고 10분 이상 남길경우 1천원, 20분 이상 남길경우 2천원 페이백!" },
+      ],
+      "광주점": [
+        { name: "영결식", genre: "공포", diff: 3, players: "2~6인", time: "60분", img: P+"14_a.webp", desc: "現在去接你 — 지금 데리러 갑니다." },
+        { name: "시크릿 왕국의 스캔들", genre: "추리/잔혹동화", diff: 4, players: "2~5인", time: "80분", img: P+"15_a.webp", desc: "시크릿 왕국의 프린스 왕자와 새 왕자비를 <br> 소개하는 연회를 개최합니다. <br> 부디 참석하여 기쁜 날을 함께 맞이해 주시오." },
+        { name: "호러맨스", genre: "로맨스/스릴러", diff: 3, players: "2~6인", time: "70분", img: P+"16_a.webp", desc: "와 오늘은 데이트하는 날! 즐겁게 놀아야지! <br><br> 그런데.. 자기야 뭐라고? ^^" },
+        { name: "서울만가면된다", genre: "일상/코미디", diff: 4, players: "2~5인", time: "69분", img: P+"21_a.webp", desc: "민서: (조심스럽게) 팀장님 근데.. 저희 지금 여기 <br> 무슨 컨셉으로 만드는 중인거예요? <br> 석현: (커피 휘저으며) 음.... 자세히보기" },
+        { name: "TITAN : 전쟁의경계", genre: "SF", diff: 4, players: "2~4인", time: "70분", img: P+"24_a.webp", desc: "이곳에서 나는 자부심이 가득한 <br> 군인으로 일하고 있다. <br> 그리고 오늘 나는 이 행성의 이름이 <br> 타이탄인 게 맞는지 의심이 가기 시작했다. <br><br> ※ 강한 빛이나 소리에 민감하신 분들은 <br> 테마 선택시 유의 바랍니다." },
+        { name: "그럼에도 불구하고,", genre: "드라마", diff: 2, players: "2~5인", time: "70분", img: P+"22_a.webp", desc: "유감스럽게도, 당신은 결국 성공하지 못할 거예요. <br><br> ※ 공포도 0.5" },
+      ],
+      "부평점": [
+        { name: "쇼쿠진", genre: "공포", diff: 4, players: "2~6인", time: "70분", img: P+"34_a.webp", desc: "쇼쿠진님은 언제나 여러분들을 기다리고 있습니다." },
+        { name: "420번지", genre: "스릴러", diff: 3, players: "2~6인", time: "70분", img: P+"33_a.webp", desc: "눈을 떠보니 어둡고 기이한 방. <br> 여긴 어디지? <br> 난... 여기서 대체 무엇을 하고 있었지...?" },
+        { name: "흑신소", genre: "판타지/코미디", diff: 3, players: "2~6인", time: "70분", img: P+"35_a.webp", desc: "돈도 여친도 직업도 없는 고시생 노령진. <br> 삶이 너무 힘든 나머지 그는 한강다리 앞에서 <br> 극단적인 선택을 하기로 맘먹는다. <br> 그때 여태의 삶이 주마등처럼 지나가고 <br> 지워버리고 싶은 흑역사들도 떠오른다. <br> 순간 바닥에 '흑역사 없애드립니다'라고 적힌 <br> 명함을 발견한다. <br> 그는 죽기전에 흑역사를 지우고 싶어 <br> 전화를 걸어보는데…" },
+        { name: "행복목욕탕", genre: "드라마/판타지", diff: 4, players: "2~6인", time: "80분", img: P+"36_a.webp", desc: "행복목욕탕 절찬 운영 중 ♨" },
+      ],
+      "수원점": [
+        { name: "직박구리 : 남친탐구생활", genre: "코믹", diff: 3, players: "2~6인", time: "70분", img: P+"27_a.webp", desc: "회사 일 때문에 잠시 외출한 남자친구. <br> 과연 남자친구의 컴퓨터에도 '그것'이 있을까? <br> 어라..? 잠깐만, 이게 뭐야..!" },
+        { name: "복도끝", genre: "공포", diff: 4, players: "2~6인", time: "75분", img: P+"26_a.webp", desc: "상문빌라의 입주민 회장인 당신은 평소처럼 <br> 집 303호로 올라가는 엘리베이터를 탄다. <br> 그런데 뒤에서 들려오는 비명소리.." },
+        { name: "혼숨", genre: "미스터리/스릴러", diff: 3, players: "2~6인", time: "70분", img: P+"28_a.webp", desc: "'괴담 모음집' 동아리에 새로 가입한 우리들은, <br> 폐가로 유명한 옥석 산장으로 신입 환영회를 <br> 가게 되었다." },
+        { name: "DKDK컴퍼니", genre: "판타지/코미디", diff: 4, players: "2~6인", time: "80분", img: P+"29_a.webp", desc: "오늘도 평화로운 DKDK COMPANY. <br> 언제나 그렇듯 영업2팀 직원들은 출근해서 <br> 시간만 때우고 있다. <br> 그런데 하필 오늘 영업2팀 실적문제로 쿵부장은 쾅대표에게 호되게 혼나고 화가 난 쿵부장은 심대리와 장사원에게 팀 실적을 위해 프로젝트 하나를 던져주는데 <br> 이름하여 프로젝트 HEART! <br><br> 과연 심대리와 장사원은 무사히 프로젝트를 <br> 성공시키고 영업2팀 실적을 올릴 수 있을까?" },
+        { name: "영안실", genre: "공포", diff: 4, players: "2~6인", time: "80분", img: P+"30_a.webp", desc: "안녕하십니까, <br> 고객님의 마지막 여정을 함께하는 <br> 인계병원 영안실입니다. <br> 편안한 밤 되시길 바랍니다." },
+        { name: "퍼펫쇼", genre: "미스터리", diff: 3, players: "2~6인", time: "70분", img: P+"31_a.webp", desc: "줄 없는 꼭두각시극에 도전할 새 단원을 모집합니다. <br> 무대에서 뵙겠습니다." },
+      ],
+      "수원2호점": [
+        { name: "알케이드 빌리지", genre: "아케이드", diff: 4, players: "2~6인", time: "80분", img: P+"39_a.webp", desc: "[배낚시 가면 사다리]에 자리한 세상에서 제일 <br> 한가한 마을, RCADE VILLAGE. <br> 물고기도 심심해서 잡히는 이 평화로운 마을에, 어느 날 청천벽력 같은 소식이 떨어진다! <br><br>  마을 이장 A에게 전해진 충격의 소식: '우수마을 평가원이... 한! 시! 간! 뒤에 도착한답니다~!' <br><br> 예? 갑자기요? <br> 이대로 가다간 [배낚시청 우수마을 운동]에서 <br> 탈락 → 내년 예산 ZERO → 마을 파산 콤보! <br><br> 그 소식을 들은 A는 뒷목 잡고 쓰러질 뻔하다가, 벌떡 일어나 외친다. <br> '모두 비상사태야! 당장 꽃심고, 쓰레기 줍고, NPC 대사 리허설 들어가!!!' <br><br> 하지만... <br> 이 마을 주민들, 과연 1시간 안에 <br> 정신 차릴 수 있을까?" },
+        { name: "OKCUT", genre: "코메디", diff: 4, players: "2~6인", time: "90분", img: P+"42_a.webp", desc: "[Synopsis #3] <br> 어느 한 저택을 수사하려는 주인공. <br> 주인공: (문이 닫히고 눈을 뜨며 시계를 본다) <br> '주어진 시간이 얼마 없군.'" },
+        { name: "성지기숙학원 : 특수교정반", genre: "공포", diff: 4, players: "2~6인", time: "80분", img: P+"37_a.webp", desc: "같은 기척, 같은 냄새, 같은 어둠. <br> 나는 또다시 이 기숙학원에서 깨어났다." },
+        { name: "춘화각 : 피할 수 없는 저주", genre: "공포", diff: 3, players: "2~6인", time: "80분", img: P+"40_a.webp", desc: "자네도 장원 급제를 위해서 이 춘화각을 찾았는가? <br> 이쪽 끝방으로 들어가시게. <br><br> ※ 해당 테마는 직원 NPC와 함께하는 테마입니다." },
+        { name: "낙화 : 떨어지는 꽃", genre: "스릴러", diff: 2, players: "2~6인", time: "80분", img: P+"38_a.webp", desc: "수천 개의 플래시가 날 향하던 그 밤, <br> 나는 꼭대기에 있었다. <br> 누구보다 찬란했던 그 순간부터— <br> 어쩌면 끝은 이미 정해져 있었는지도 모른다. <br><br> ※ 해당 테마는 12세 미만 이용이 불가능한 <br> 테마입니다." },
+        { name: "HINDSIGHT", genre: "잠입/드라마", diff: 3, players: "2~4인", time: "80분", img: P+"41_a.webp", desc: "여보세요, 도희 맞지? 거의 2년 만이네. <br><br> 그날 뒤로 해킹에서 손 뗀 건 알지만... <br> 우리 오랜만에 일 하나만 같이 할까?" },
+      ],
+    };
+
+    // 다른 페이지(reserve.html 등)에서 동일한 desc 를 쓸 수 있도록 themeData 통째로 공유
+    try { localStorage.setItem("themesData", JSON.stringify(themeData)); } catch (e) {}
+
+    const stars = d => "★".repeat(d) + "☆".repeat(5 - d);
+    const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+
+    function render(branch) {
+      const grid = document.getElementById("grid");
+      grid.innerHTML = themeData[branch].map(t => {
+        const q = `reserve.html?branch=${encodeURIComponent(branch)}&theme=${encodeURIComponent(t.name)}`;
+        return `
+        <article class="tcard">
+          <div class="tframe">
+            <img src="${t.img}" alt="${esc(t.name)}" loading="lazy" />
+            <span class="genre">${esc(t.genre)}</span>
+            <div class="tinfo">
+              <p class="ti-genre">${esc(t.genre)}</p>
+              <h3 class="ti-name">${esc(t.name)}</h3>
+              <p class="ti-desc">${Array.isArray(t.desc) ? t.desc.map(function(l){return l===""?"<br>":l;}).join("<br> ") : t.desc}</p>
+              <div class="ti-meta">
+                <span class="ti-stars">난이도 ${stars(t.diff)}</span>
+                <span>${t.players}<span class="dot">·</span>${t.time}</span>
+              </div>
+              <a class="ti-btn" href="${q}">예약 바로가기 <span>→</span></a>
+            </div>
+          </div>
+          <div class="tcap">
+            <p class="name">${esc(t.name)}</p>
+            <p class="stars">${stars(t.diff)}</p>
+            <p class="meta"><span>${t.players}</span><span class="dot">·</span><span>${t.time}</span></p>
+          </div>
+        </article>`;
+      }).join("");
+      // "예약 바로가기" 클릭 시 그 테마의 본문(desc)을 reserve.html이 읽을 수 있도록 sessionStorage 에 저장
+      grid.querySelectorAll(".ti-btn").forEach(function (btn, i) {
+        btn.addEventListener("click", function () {
+          var t = themeData[branch][i];
+          var descHtml = Array.isArray(t.desc)
+            ? t.desc.map(function (l) { return l === "" ? "<br>" : l; }).join("<br> ")
+            : t.desc;
+          sessionStorage.setItem("pickedTheme", JSON.stringify({
+            branch: branch, name: t.name, desc: descHtml
+          }));
+        });
+      });
+      // 터치 기기 또는 모바일 폭: 카드를 탭하면 후버 효과/상세정보를 토글. 다른 카드를 탭하면 기존 카드는 닫힘
+      if (window.matchMedia("(hover: none), (pointer: coarse), (max-width: 820px)").matches) {
+        grid.querySelectorAll(".tcard").forEach(function (card) {
+          card.addEventListener("click", function (e) {
+            if (e.target.closest(".ti-btn")) return;   // 예약 바로가기는 링크 그대로
+            var open = card.classList.contains("is-active");
+            grid.querySelectorAll(".tcard.is-active").forEach(function (c) { c.classList.remove("is-active"); });
+            if (!open) card.classList.add("is-active");
+          });
+        });
+      }
+    }
+
+    document.querySelectorAll("#branchTabs button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#branchTabs button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("branchLabel").textContent = btn.dataset.branch;
+        render(btn.dataset.branch);
+      });
+    });
+
+    // 관리자 테마(클라우드) 를 themeData 에 반영 — 기존 상세 소개문구(리치 텍스트)는 이름으로 매칭해 보존
+    function applyCloudThemes(g){
+      if(!g || !Object.keys(g).length) return;
+      Object.keys(g).forEach(function(b){
+        var mapped = g[b].map(window.SDThemes.rowToCard).filter(function(t){ return t.active!==false; });
+        if(!mapped.length) return;
+        var prev = themeData[b] || [];
+        mapped.forEach(function(t){
+          var old = prev.find(function(p){ return p.name === t.name; });
+          if(old && old.desc) t.desc = old.desc;   // 기존 마케팅 소개문구 유지, 신규는 관리자 desc
+        });
+        themeData[b] = mapped;
+      });
+    }
+
+    function runDeepLink(){
+      var qs = new URLSearchParams(location.search);
+      var qBranch = qs.get('branch'), qTheme = qs.get('theme');
+      if (qBranch && themeData[qBranch]) {
+        var tabBtn = document.querySelector('#branchTabs button[data-branch="' + qBranch + '"]');
+        if (tabBtn) tabBtn.click();
+        if (qTheme) {
+          setTimeout(function () {
+            var cards = document.querySelectorAll('#grid .tcard');
+            for (var i = 0; i < cards.length; i++) {
+              var nameEl = cards[i].querySelector('.ti-name') || cards[i].querySelector('.name');
+              if (nameEl && nameEl.textContent.trim() === qTheme) {
+                cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                var frame = cards[i].querySelector('.tframe');
+                if (frame) {
+                  frame.classList.add('is-picked');
+                  (function(f){ setTimeout(function(){ f.classList.remove('is-picked'); }, 10000); })(frame);
+                }
+                break;
+              }
+            }
+          }, 280);
+        }
+      }
+    }
+
+    function startThemes(){ render("대학로점"); runDeepLink(); }
+
+    if(window.SDThemes && window.SDThemes.enabled){
+      window.SDThemes.byBranch()
+        .then(function(g){ applyCloudThemes(g); })
+        .catch(function(e){ console.warn("[themes] 테마 동기화 실패", e); })
+        .then(startThemes);
+    } else { startThemes(); }
+  </script>
+
+<script>(function(){var b=document.getElementById("navBurger"),n=document.getElementById("navMenu");if(b&&n){b.addEventListener("click",function(){b.classList.toggle("on");n.classList.toggle("open");});}})();</script>
+</body>
+</html>

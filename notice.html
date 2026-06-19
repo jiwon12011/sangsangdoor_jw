@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N8NXNNT6');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MST4P557TL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MST4P557TL');
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>상상의 문 — 공지사항</title>
+
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root { --navy:#0a0e1c; --gold:#f2d7ac; --gold-d:#c8a863; --cream:#ece4d6; --muted:#9aa2bd;
+          --card:#10162e; --card-2:#0c1126; --line:rgba(200,168,99,.18); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--navy); color:var(--cream);
+         font-family:'Paperozi',"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif; overflow-x:hidden; }
+  img { display:block; -webkit-user-drag:none; user-select:none; }
+
+  /* 헤더 */
+  .topbar { position:sticky; top:0; z-index:100; height:78px; background:linear-gradient(180deg,#0c1124 0%,#080b18 100%);
+            border-bottom:1px solid var(--line); display:flex; align-items:center; padding:0 clamp(20px,4vw,56px); }
+  .topbar .brand { display:flex; align-items:center; flex:none; }
+  .topbar .brand img { height:40px; width:auto; }
+  .topbar nav { flex:1; display:flex; align-items:center; justify-content:center; gap:38px; }
+  .topbar nav a { position:relative; color:#d9d2c4; text-decoration:none; font-size:16px; font-weight:600; letter-spacing:1.5px; white-space:nowrap; transition:color .2s ease; }
+  .topbar nav a:hover, .topbar nav a.active { color:var(--gold); }
+  .topbar nav a.active { font-weight:700; }
+  .topbar nav a.active::before { content:""; position:absolute; left:50%; top:-14px; width:13px; height:13px; transform:translateX(-50%); background:url('img/story/header_star.webp') center/contain no-repeat; }
+  .topbar .qbtn { flex:none; display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 22px;
+                  border:1px solid rgba(200,168,99,.55); border-radius:6px; color:var(--gold); text-decoration:none;
+                  font-size:15px; font-weight:600; letter-spacing:1px; transition:background .2s,border-color .2s; }
+  .topbar .qbtn:hover { background:rgba(200,168,99,.12); border-color:var(--gold); }
+  .topbar .qbtn span { font-size:18px; }
+  .nav-burger{ display:none; flex-direction:column; gap:5px; align-items:center; justify-content:center; width:42px; height:42px; flex:none; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+  .nav-burger span{ width:20px; height:2px; background:var(--gold); border-radius:2px; transition:transform .25s, opacity .2s; }
+  .nav-burger.on span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-burger.on span:nth-child(2){ opacity:0; }
+  .nav-burger.on span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .topbar nav a.nav-cta{ display:none; }
+  @media (max-width:760px){
+    .topbar{ height:64px; padding:0 16px; justify-content:space-between; }
+    .nav-burger{ display:flex; }
+    .topbar > nav{ position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0;
+                   background:linear-gradient(180deg,#0c1124,#080b18); border-bottom:0; box-shadow:none;
+                   max-height:0; overflow:hidden; transition:max-height .32s ease; }
+    .topbar > nav.open{ max-height:400px; border-bottom:1px solid var(--line); box-shadow:0 14px 28px rgba(0,0,0,.45); }
+    .topbar nav a{ padding:15px 22px; border-top:1px solid rgba(255,255,255,.06); font-size:15px; letter-spacing:0; }
+    .topbar nav a:first-child{ border-top:0; }
+    .topbar nav a.active::before{ display:none; }
+    .topbar nav a.active{ color:var(--gold); }
+    .topbar nav a.nav-cta{ display:block; color:var(--gold); font-weight:700; background:rgba(200,168,99,.08); }
+    .topbar .qbtn{ display:none; }
+  }
+  @media (max-width:860px){ .topbar nav a{ } }
+
+  /* 배경 (하단 페이드) */
+  .notice { position:relative; padding-bottom:clamp(80px,10vw,140px);
+            background:
+              linear-gradient(180deg, rgba(10,14,28,0) 56%, rgba(10,14,28,.85) 80%, var(--navy) 92%),
+              url('img/sub_bgi.webp') top center / 100% auto no-repeat,
+              var(--navy); }
+  .wrap { max-width:1240px; margin:0 auto; padding:0 clamp(20px,4vw,48px); }
+  /* 본문 가독 폭 (공지/FAQ 텍스트는 헤더보다 좁게, 좌측 정렬 유지) */
+  .notice .tabs, .notice-list, .faq-list, .notice-info { max-width:1000px; }
+
+  /* NOTICE 히어로 (서브페이지 공통 헤더 규격) */
+  .notice-head { padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,76px); max-width:620px; }
+  .notice-head .en { font-family:"Cormorant Garamond","Times New Roman",serif; font-size:clamp(44px,6vw,74px); font-weight:600; letter-spacing:.135em; line-height:1; color:var(--gold); }
+  .notice-head .kr { margin-top:clamp(20px,3vw,32px); font-size:clamp(20px,2.4vw,29px); font-weight:700; color:#f4eede; letter-spacing:.02em; }
+  .notice-head .desc { margin-top:14px; font-size:clamp(14px,1.5vw,16px); line-height:1.85; color:var(--muted); }
+
+  /* 탭 (공지사항 / FAQ) */
+  .tabs { display:flex; gap:clamp(20px,3vw,40px); padding-bottom:14px; margin-bottom:clamp(28px,4vw,40px);
+          border-bottom:1px solid var(--line); }
+  .tabs button { background:none; border:0; cursor:pointer; font-family:inherit; font-size:clamp(17px,2vw,21px);
+                 font-weight:700; color:var(--muted); padding:4px 2px; position:relative; transition:color .2s; }
+  .tabs button:hover { color:#d9d2c4; }
+  .tabs button.active { color:var(--gold); }
+  .tabs button.active::after { content:""; position:absolute; left:0; right:0; bottom:-15px; height:2px; background:var(--gold-d); }
+
+  .panel { display:none; }
+  .panel.on { display:block; }
+
+  /* 아코디언 — 배경 이미지와 분리되도록 박스 처리 */
+  .acc { background:rgba(10,14,28,.86); border:1px solid var(--line); border-radius:14px;
+         padding:6px clamp(16px,2.2vw,30px); box-shadow:0 20px 50px rgba(0,0,0,.45);
+         -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
+  .acc-item { border-bottom:1px solid rgba(255,255,255,.09); }
+  .acc-item:last-child { border-bottom:0; }
+  .acc-q { width:100%; background:none; border:0; cursor:pointer; font-family:inherit; color:inherit;
+           display:flex; align-items:center; gap:16px; padding:22px 6px; text-align:left; transition:color .2s; }
+  .acc-q:hover { color:var(--gold); }
+  .acc-q .cat { flex:none; min-width:60px; box-sizing:border-box; text-align:center;
+                font-size:12px; font-weight:700; padding:4px 11px; border-radius:20px;
+                background:rgba(200,168,99,.14); color:var(--gold); border:1px solid rgba(200,168,99,.3); }
+  .acc-q .cat.event { background:rgba(150,120,219,.16); color:#c3b3ec; border-color:rgba(150,120,219,.35); }
+  .acc-q .q-mark { flex:none; width:24px; font-family:"Cormorant Garamond",serif; font-size:20px; font-weight:700; color:var(--gold-d); }
+  .acc-q .title { flex:1; font-size:clamp(15px,1.7vw,17px); font-weight:600; color:#e9e4d6; line-height:1.5; }
+  .acc-q .date { flex:none; font-size:13px; color:#aeb6cc; }
+  .acc-q .chev { flex:none; width:11px; height:11px; border-right:2px solid var(--gold-d); border-bottom:2px solid var(--gold-d);
+                 transform:rotate(45deg); transition:transform .3s ease; margin-left:4px; }
+  .acc-item.open .acc-q .chev { transform:rotate(-135deg); }
+  .acc-a { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .acc-item.open .acc-a { max-height:400px; }
+  .acc-a .inner { padding:0 6px 24px; font-size:14.5px; line-height:1.8; color:#bcc2d4; white-space:pre-line; }
+  .acc-q .title-wrap { flex:1; display:flex; align-items:center; gap:14px; min-width:0; }
+  .acc-q .title-wrap .title { flex:1; }
+  /* 답 텍스트를 질문 제목 시작 위치에 맞춰 들여쓰기 (배지/Q마크 + 간격 만큼) */
+  @media (min-width:561px){
+    #panel-notice .acc-a .inner { padding-left:82px; }  /* acc-q pad 6 + 배지 60 + gap 16 */
+    #panel-faq    .acc-a .inner { padding-left:46px; }  /* acc-q pad 6 + Q마크 24 + gap 16 */
+  }
+  @media (max-width:560px){
+    .acc-q { flex-wrap:wrap; gap:10px; }
+    .acc-q .date { order:3; width:100%; padding-left:40px; }
+    .acc-a .inner { padding-left:6px; }
+  }
+
+  /* 푸터 */
+  .footer { background:#0a0f24; color:#b9c0d6; padding:clamp(40px,5vw,72px) 20px clamp(28px,4vw,46px); }
+  .footer a { color:inherit; text-decoration:none; }
+  .footer-top { max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:16px 30px; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08); }
+  .footer-hours { display:flex; align-items:center; gap:14px; }
+  .footer-hours .clock { width:36px;height:36px;border:1px solid #c8a863;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex:none; }
+  .footer-hours .ft { font-size:13px; line-height:1.7; }
+  .br-mb { display: none; }
+  @media (max-width: 620px) { .br-mb { display: inline; } }
+  /* 모바일에서만 숨기는 구분자(·) — 데스크톱은 한 줄 유지 */
+  .sep-mb { display: inline; }
+  @media (max-width: 620px) { .sep-mb { display: none; } }
+  .footer-hours .ft b { color:#e8dcc0; font-weight:600; }
+  .footer-nav { margin-left:auto; display:flex; gap:22px; flex-wrap:wrap; font-size:13px; }
+  .footer-nav a:hover { color:var(--gold); }
+  .footer-main { max-width:1280px; margin:clamp(24px,3vw,38px) auto 0; display:flex; flex-wrap:wrap; gap:30px 50px; align-items:flex-start; }
+  .footer-brand { min-width:190px; }
+  .footer-brand img { width:138px; height:auto; }
+  .footer-brand p { margin-top:10px; font-size:12px; color:#7c84a0; letter-spacing:.05em; }
+  .footer-stores { display:grid; grid-template-columns:repeat(2,minmax(210px,1fr)); gap:4px 40px; flex:1; }
+  .footer-stores div { font-size:12.5px; line-height:1.95; color:#9aa2bd; }
+  .footer-stores b { color:#c3cae0; font-weight:600; }
+  .footer-social { display:flex; gap:10px; }
+  .footer-social a { width:34px;height:34px;border-radius:50%; background:rgba(255,255,255,.08); display:flex;align-items:center;justify-content:center; font-size:12px; color:#cfd5e6; }
+  .footer-social a:hover { background:var(--gold); color:#0a0f24; }
+  .footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
+  @media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
+</style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="topbar">
+    <a class="brand" href="index.html"><img src="img/main/logo.webp" alt="상상의문 ESCAPE ROOM" /></a>
+    <nav id="navMenu">
+      <a href="story.html">상상의 문</a>
+      <a href="themes.html">테마</a>
+      <a href="reserve.html">예약</a>
+      <a href="location.html">매장안내</a>
+      <a href="notice.html" class="active">공지</a>
+      <a href="check.html" class="nav-cta">예약 확인 →</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" type="button" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    <a class="qbtn" href="check.html">예약 확인 <span>→</span></a>
+  </header>
+
+  <section class="notice">
+    <div class="wrap">
+
+      <!-- NOTICE 히어로 -->
+      <div class="notice-head">
+        <h1 class="en">NOTICE</h1>
+        <p class="kr">상상의 문 소식과 안내</p>
+        <p class="desc">공지사항과 자주 묻는 질문을 한곳에 모았습니다.<br>방문 전 꼭 확인해 주세요.</p>
+      </div>
+
+      <!-- 탭 -->
+      <div class="tabs">
+        <button class="active" data-tab="notice">공지사항</button>
+        <button data-tab="faq">자주 묻는 질문 (FAQ)</button>
+      </div>
+
+      <!-- 공지사항 -->
+      <div class="panel on" id="panel-notice">
+        <div class="acc" id="accNotice"></div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="panel" id="panel-faq">
+        <div class="acc" id="accFaq"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-hours">
+        <span class="clock">&#128337;</span>
+        <span class="ft"><b>운영 시간</b> &nbsp; 평일 12:00 - 23:00<span class="sep-mb"> &nbsp;·&nbsp; </span><br class="br-mb">주말 및 공휴일 10:00 - 23:00<br>연중무휴 (설날, 추석 당일 제외)</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="notice.html">공지사항</a>
+        <a href="check.html">예약확인</a>
+        <a href="partnership.html">제휴문의</a>
+        <a href="privacy.html">개인정보취급방침</a>
+      </nav>
+    </div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/main/logo.webp" alt="상상의 문" />
+        <p>상상 그 이상의 공간</p>
+      </div>
+      <div class="footer-stores">
+        <div><b>대학로점</b> 02-765-7771<br>서울특별시 종로구 창경궁로34길 18-5, 지하3층</div>
+        <div><b>분당서현점</b> 031-708-1777<br>경기도 성남시 분당구 황새울로342번길 11 금호리빙스텔 지하1층</div>
+        <div><b>광주점</b> 062-226-1126<br>광주광역시 동구 충장로 80-5, 6층</div>
+        <div><b>수원점</b> 010-4397-3057<br>경기도 수원시 팔달구 인계로138번길 44, 4층</div>
+        <div><b>부평점</b> 010-3242-3218<br>인천광역시 부평구 시장로12번길 7 보광빌딩 4층</div>
+        <div><b>수원2호점</b> 010-9360-4148<br>경기도 수원시 팔달구 효원로249번길 46-18 3층</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>COPYRIGHT ⓒ 2026 상상의문. All right reserved. / created by TEAM 1</span>
+      <span>이메일 imaginarydoor@yologuys.com</span>
+      <a href="admin.html" style="color:inherit;opacity:.55">관리자</a>
+    </div>
+  </footer>
+
+  <script>
+    const esc = s => (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+    const NOTICES = [
+      { cat:"안내", date:"2026.05.01", title:"2026년 운영시간 안내",
+        body:"평일 12:00 - 23:00 / 주말·공휴일 10:00 - 23:00 으로 운영합니다.\n연중무휴이나 설날·추석 당일은 휴무입니다. 마지막 회차는 지점·테마에 따라 다르니 예약 페이지에서 확인해 주세요." },
+      { cat:"이벤트", date:"2026.04.20", title:"조조·심야 할인 안내",
+        body:"지점별로 첫 타임(조조) 또는 막 타임(심야)에 할인이 적용됩니다.\n예) 대학로점 조조 5,000원 / 광주점 첫·두번째 타임 인당 3,000원 / 수원2호점 조조 5,000원·심야 3,000원. 할인 적용 시간은 예약 페이지의 각 테마 시간표를 참고하세요." },
+      { cat:"공지", date:"2026.04.01", title:"예약 및 취소·변경 정책 안내",
+        body:"예약금 선결제로 예약이 확정되며, 잔금은 현장에서 결제합니다. 예약금은 지점별로 다릅니다 — 분당서현점 1만원, 수원점·수원2호점은 전액 현장 결제(예약금 없음), 그 외 지점 2만원.\n게임 시작 24시간 이내 취소·변경 시 예약금 환불이 어렵습니다. 10분 전까지 미도착 시 게임 시간이 차감될 수 있습니다." },
+      { cat:"안내", date:"2026.03.15", title:"입장 제한 및 연령 안내",
+        body:"임산부, 폐쇄공포증이 있으신 분, 음주 고객은 입장이 제한됩니다.\n연령 제한은 테마마다 다릅니다(일부 15세 미만 보호자 동반, 12세 미만 이용 불가, 초등학생 이용 불가 테마 등). 테마 상세를 확인해 주세요." },
+      { cat:"공지", date:"2026.03.02", title:"매장 내 촬영 및 문제 누설 금지",
+        body:"컨텐츠 보호를 위해 게임 룸 내 사진·영상 촬영을 금지합니다. 입장 전 휴대폰은 보관함에 보관해 주세요.\n아직 체험하지 않은 분들을 위해 문제·정답 공유(스포일러)는 삼가 주시기 바랍니다." },
+    ];
+
+    const FAQS = [
+      { q:"예약은 어떻게 하나요?",
+        a:"상단 '예약' 메뉴에서 지점 → 테마 → 날짜 → 시간 → 인원을 선택한 뒤, 예약금 결제로 확정됩니다. 예약금은 지점별로 다릅니다(분당서현점 1만원 · 수원·수원2호점 전액 현장 결제 · 그 외 지점 2만원)." },
+      { q:"몇 명까지 함께 할 수 있나요?",
+        a:"테마마다 다르며 보통 2~6명(일부 2~4명, 2~5명)입니다. 각 테마 상세의 '인원'을 확인해 주세요." },
+      { q:"예약 취소·변경이 가능한가요?",
+        a:"게임 시작 24시간 전까지는 가능합니다. 24시간 이내에는 예약금 환불이 어려운 점 양해 부탁드립니다." },
+      { q:"늦으면 어떻게 되나요?",
+        a:"원활한 진행을 위해 시작 10분 전 도착을 권장합니다. 지각 시 남은 시간만큼만 진행되어 게임 시간이 차감될 수 있습니다." },
+      { q:"공포 테마는 많이 무섭나요?",
+        a:"테마별로 공포도가 다릅니다. 각 테마 상세의 '공포' 지표(거의 없음 ~ 매우 높음)를 참고해 선택하세요." },
+      { q:"결제는 어떻게 하나요?",
+        a:"예약금은 계좌 입금(무통장)으로 받으며 잔금은 현장에서 결제합니다. 예약금은 지점별로 다릅니다 — 분당서현점 1만원, 그 외 지점 2만원, 수원·수원2호점은 예약금 없이 전액 현장 결제입니다." },
+      { q:"몇 살부터 이용할 수 있나요?",
+        a:"테마별 연령 정책이 다릅니다. 보호자 동반 조건이나 이용 불가 연령이 있는 테마가 있으니 예약 전 테마 상세를 확인해 주세요." },
+      { q:"주차가 되나요?",
+        a:"지점마다 다릅니다. 매장안내 페이지의 위치·연락처로 문의해 주시면 가장 정확합니다." },
+    ];
+
+    function accItem(top, body){
+      return `<div class="acc-item">
+        <button class="acc-q">${top}<span class="chev"></span></button>
+        <div class="acc-a"><div class="inner">${body}</div></div>
+      </div>`;
+    }
+
+    document.getElementById("accNotice").innerHTML = NOTICES.map(n=>accItem(
+      `<span class="cat ${n.cat==='이벤트'?'event':''}">${esc(n.cat)}</span>`+
+      `<span class="title-wrap"><span class="title">${esc(n.title)}</span></span>`+
+      `<span class="date">${esc(n.date)}</span>`,
+      esc(n.body)
+    )).join("");
+
+    document.getElementById("accFaq").innerHTML = FAQS.map(f=>accItem(
+      `<span class="q-mark">Q</span><span class="title-wrap"><span class="title">${esc(f.q)}</span></span>`,
+      esc(f.a)
+    )).join("");
+
+    // 아코디언: 클릭 시 펼침/접힘 (한 번에 하나만 열림)
+    document.querySelectorAll(".acc").forEach(acc=>{
+      acc.addEventListener("click", e=>{
+        const q = e.target.closest(".acc-q"); if(!q) return;
+        const item = q.parentElement;
+        const open = item.classList.contains("open");
+        acc.querySelectorAll(".acc-item.open").forEach(i=>i.classList.remove("open"));
+        if(!open) item.classList.add("open");
+      });
+    });
+
+    // 탭 전환
+    document.querySelectorAll(".tabs button").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
+        document.getElementById("panel-"+btn.dataset.tab).classList.add("on");
+      });
+    });
+
+    // ?tab=faq 로 진입하면 FAQ 먼저 표시
+    if(new URLSearchParams(location.search).get("tab")==="faq"){
+      document.querySelector('.tabs button[data-tab="faq"]').click();
+    }
+  </script>
+
+<script>(function(){var b=document.getElementById("navBurger"),n=document.getElementById("navMenu");if(b&&n){b.addEventListener("click",function(){b.classList.toggle("on");n.classList.toggle("open");});}})();</script>
+</body>
+</html>
