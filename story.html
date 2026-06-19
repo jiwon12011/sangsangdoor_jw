@@ -23,98 +23,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- 공용 웹폰트 (Paperozi) -->
 <link rel="stylesheet" href="css/fonts.css" />
+<!-- 서브페이지 공용 스타일 (토큰·헤더·푸터) -->
+<link rel="stylesheet" href="css/site.css" />
 <!-- STORY 영문 타이틀용 세리프 -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- GSAP CDN (defer 로드) DNS/TLS 선연결 -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
 
 <style>
   :root {
-    --navy:   #0a0e1c;
-    --gold:   #f2d7ac;
-    --cream:  #ece4d6;
     --paper:  #ece9e2;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
+  /* 토큰·리셋·body 기본은 css/site.css. story는 밝은 배경이라 bg/색만 따로 둔다 */
   body {
     background: #ededf0;
     color: #2a2a2a;
-    /* 거의 모든 텍스트는 Paperozi */
-    font-family: 'Paperozi', "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-    font-weight: 400;
-    overflow-x: hidden;
   }
-  img { display: block; -webkit-user-drag: none; user-select: none; }
 
-  /* ══════════════ 상단 헤더 ══════════════ */
-  .topbar {
-    position: sticky; top: 0; z-index: 100;
-    height: 78px;
-    background: linear-gradient(180deg, #0c1124 0%, #080b18 100%);
-    border-bottom: 1px solid rgba(200,168,99,.18);
-    display: flex; align-items: center;
-    padding: 0 clamp(20px, 4vw, 56px);
-  }
-  .topbar .brand { display: flex; align-items: center; flex: none; }
-  .topbar .brand img { height: 40px; width: auto; }
-  .topbar nav {
-    flex: 1;
-    display: flex; align-items: center; justify-content: center;
-    gap: 38px;                       /* 메인 헤더 메뉴 간격과 동일하게 */
-  }
-  .topbar nav a {
-    position: relative;
-    color: #d9d2c4; text-decoration: none;
-    font-size: 16px; font-weight: 600; letter-spacing: 1.5px;   /* 메인 메뉴와 동일한 위치/크기 */
-    white-space: nowrap;
-    transition: color .2s ease;
-  }
-  .topbar nav a:hover { color: var(--gold); }
-  .topbar nav a.active { color: var(--gold); font-weight: 700; }
-  .topbar nav a.active::before {
-    content: ""; position: absolute; left: 50%; top: -14px;
-    width: 13px; height: 13px; transform: translateX(-50%);
-    background: url('img/story/header_star.webp') center/contain no-repeat;
-  }
-  .topbar .spacer { width: 120px; flex: none; }   /* 좌우 균형용 */
-
-  /* 우상단 예약 확인 버튼 (themes 페이지와 동일) */
-  .topbar .qbtn {
-    flex: none;
-    display: inline-flex; align-items: center; gap: 10px;
-    height: 44px; padding: 0 22px;
-    border: 1px solid rgba(200,168,99,.55); border-radius: 6px;
-    color: var(--gold); text-decoration: none;
-    font-size: 15px; font-weight: 600; letter-spacing: 1px;
-    transition: background .2s ease, border-color .2s ease;
-  }
-  .topbar .qbtn:hover { background: rgba(200,168,99,.12); border-color: var(--gold); }
-  .topbar .qbtn span { font-size: 18px; }
-
-  .nav-burger{ display:none; flex-direction:column; gap:5px; align-items:center; justify-content:center; width:42px; height:42px; flex:none; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
-  .nav-burger span{ width:20px; height:2px; background:var(--gold); border-radius:2px; transition:transform .25s, opacity .2s; }
-  .nav-burger.on span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-  .nav-burger.on span:nth-child(2){ opacity:0; }
-  .nav-burger.on span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
-  .topbar nav a.nav-cta{ display:none; }
-  @media (max-width:760px){
-    .topbar { height:64px; padding:0 16px; justify-content:space-between; }
-    .topbar .spacer { display:none; }
-    .nav-burger{ display:flex; }
-    .topbar > nav{ position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0;
-                   background:linear-gradient(180deg,#0c1124,#080b18); border-bottom:0; box-shadow:none;
-                   max-height:0; overflow:hidden; transition:max-height .32s ease; }
-    .topbar > nav.open{ max-height:400px; border-bottom:1px solid var(--line); box-shadow:0 14px 28px rgba(0,0,0,.45); }
-    .topbar nav a{ padding:15px 22px; border-top:1px solid rgba(255,255,255,.06); font-size:15px; letter-spacing:0; }
-    .topbar nav a:first-child{ border-top:0; }
-    .topbar nav a.active::before{ display:none; }
-    .topbar nav a.active{ color:var(--gold); }
-    .topbar nav a.nav-cta{ display:block; color:var(--gold); font-weight:700; background:rgba(200,168,99,.08); }
-    .topbar .qbtn { display:none; }
-  }
+  /* 헤더(.topbar)·푸터(.footer)는 css/site.css 공용 */
 
   /* ══════════════ STORY 타이틀 ══════════════ */
   .story-head {
@@ -277,33 +206,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .key-img img { width: 100%; height: auto; }
 
-  /* ══════════════ FOOTER (메인과 동일) ══════════════ */
-  .footer { background:#0a0f24; color:#b9c0d6; padding:clamp(40px,5vw,72px) 20px clamp(28px,4vw,46px); }
-  .footer a { color:inherit; text-decoration:none; }
-  .footer-top { max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:16px 30px; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08); }
-  .footer-hours { display:flex; align-items:center; gap:14px; }
-  .footer-hours .clock { width:36px;height:36px;border:1px solid #c8a863;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex:none; }
-  .footer-hours .ft { font-size:13px; line-height:1.7; }
-  .br-mb { display: none; }
-  @media (max-width: 620px) { .br-mb { display: inline; } }
-  /* 모바일에서만 숨기는 구분자(·) — 데스크톱은 한 줄 유지 */
-  .sep-mb { display: inline; }
-  @media (max-width: 620px) { .sep-mb { display: none; } }
-  .footer-hours .ft b { color:#e8dcc0; font-weight:600; }
-  .footer-nav { margin-left:auto; display:flex; gap:22px; flex-wrap:wrap; font-size:13px; }
-  .footer-nav a:hover { color:var(--gold); }
-  .footer-main { max-width:1280px; margin:clamp(24px,3vw,38px) auto 0; display:flex; flex-wrap:wrap; gap:30px 50px; align-items:flex-start; }
-  .footer-brand { min-width:190px; }
-  .footer-brand img { width:138px; height:auto; }
-  .footer-brand p { margin-top:10px; font-size:12px; color:#7c84a0; letter-spacing:.05em; }
-  .footer-stores { display:grid; grid-template-columns:repeat(2,minmax(210px,1fr)); gap:4px 40px; flex:1; }
-  .footer-stores div { font-size:12.5px; line-height:1.95; color:#9aa2bd; }
-  .footer-stores b { color:#c3cae0; font-weight:600; }
-  .footer-social { display:flex; gap:10px; }
-  .footer-social a { width:34px;height:34px;border-radius:50%; background:rgba(255,255,255,.08); display:flex;align-items:center;justify-content:center; font-size:12px; color:#cfd5e6; }
-  .footer-social a:hover { background:var(--gold); color:#0a0f24; }
-  .footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
-  @media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
+  /* 푸터(.footer)·유틸(.br-mb/.sep-mb)은 css/site.css 공용 */
 
   /* ══════════════ 등장 모션 초기상태 (JS 동작 시에만) ══════════════ */
   .gsap-on .anim { opacity: 0; will-change: transform, opacity; }
@@ -405,7 +308,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="key-panel anim" data-anim="up">
       <div class="key-img anim" data-anim="keyin"><img src="img/story/story_key.webp" alt="열쇠" /></div>
-      <p class="key-text anim" data-anim="appear">당신의 상상력이<br>새로운 이야기를 여는<br>열쇠가 될 것 입니다.</p>
+      <p class="key-text anim" data-anim="appear">당신의 상상력이<br>새로운 이야기를 여는<br>열쇠가 될 것입니다.</p>
     </div>
   </div>
 
@@ -448,13 +351,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </footer>
 
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP + ScrollTrigger (defer: 파싱 차단 제거. defer는 순서 보존 → gsap 먼저, ScrollTrigger 다음) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
-  (function () {
+  // defer 스크립트는 DOMContentLoaded 전에 실행되므로 이 시점엔 gsap/ScrollTrigger 전역이 준비된다.
+  // (이전엔 IIFE가 파싱 시점에 즉시 돌아 defer 시 gsap 미로드 → early-return으로 연출 전체가 죽었음)
+  window.addEventListener('DOMContentLoaded', function () {
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!window.gsap || reduce) return;   // GSAP 없거나 모션최소화면 정적 표시
+    if (typeof gsap === 'undefined' || reduce) return;   // GSAP 없거나 모션최소화면 정적 표시
 
     document.documentElement.classList.add('gsap-on');
     gsap.registerPlugin(ScrollTrigger);
@@ -535,7 +440,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     window.addEventListener('load', function () { ScrollTrigger.refresh(); });
     ScrollTrigger.refresh();
-  })();
+  });
   </script>
 <script>(function(){var b=document.getElementById("navBurger"),n=document.getElementById("navMenu");if(b&&n){b.addEventListener("click",function(){b.classList.toggle("on");n.classList.toggle("open");});}})();</script>
 </body>

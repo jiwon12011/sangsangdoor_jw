@@ -22,65 +22,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>상상의 문 — 개인정보취급방침</title>
 
 <link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/site.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
 
 <style>
-  :root { --navy:#0a0e1c; --gold:#f2d7ac; --gold-d:#c8a863; --cream:#ece4d6; --muted:#9aa2bd;
-          --card:#10162e; --card-2:#0c1126; --line:rgba(200,168,99,.18); }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { background:var(--navy); color:var(--cream);
-         font-family:'Paperozi',"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif; overflow-x:hidden; }
-  img { display:block; -webkit-user-drag:none; user-select:none; }
-
-  /* ── 헤더 ── */
-  .topbar { position:sticky; top:0; z-index:100; height:78px; background:linear-gradient(180deg,#0c1124 0%,#080b18 100%);
-            border-bottom:1px solid var(--line); display:flex; align-items:center; padding:0 clamp(20px,4vw,56px); }
-  .topbar .brand { display:flex; align-items:center; flex:none; }
-  .topbar .brand img { height:40px; width:auto; }
-  .topbar nav { flex:1; display:flex; align-items:center; justify-content:center; gap:38px; }
-  .topbar nav a { position:relative; color:#d9d2c4; text-decoration:none; font-size:16px; font-weight:600; letter-spacing:1.5px; white-space:nowrap; transition:color .2s ease; }
-  .topbar nav a:hover, .topbar nav a.active { color:var(--gold); }
-  .topbar nav a.active { font-weight:700; }
-  .topbar nav a.active::before { content:""; position:absolute; left:50%; top:-14px; width:13px; height:13px; transform:translateX(-50%); background:url('img/story/header_star.webp') center/contain no-repeat; }
-  .topbar .qbtn { flex:none; display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 22px;
-                  border:1px solid rgba(200,168,99,.55); border-radius:6px; color:var(--gold); text-decoration:none;
-                  font-size:15px; font-weight:600; letter-spacing:1px; transition:background .2s,border-color .2s; }
-  .topbar .qbtn:hover { background:rgba(200,168,99,.12); border-color:var(--gold); }
-  .topbar .qbtn span { font-size:18px; }
-  .nav-burger{ display:none; flex-direction:column; gap:5px; align-items:center; justify-content:center; width:42px; height:42px; flex:none; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
-  .nav-burger span{ width:20px; height:2px; background:var(--gold); border-radius:2px; transition:transform .25s, opacity .2s; }
-  .nav-burger.on span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-  .nav-burger.on span:nth-child(2){ opacity:0; }
-  .nav-burger.on span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
-  .topbar nav a.nav-cta{ display:none; }
-  @media (max-width:760px){
-    .topbar{ height:64px; padding:0 16px; justify-content:space-between; }
-    .nav-burger{ display:flex; }
-    .topbar > nav{ position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0;
-                   background:linear-gradient(180deg,#0c1124,#080b18); border-bottom:0; box-shadow:none;
-                   max-height:0; overflow:hidden; transition:max-height .32s ease; }
-    .topbar > nav.open{ max-height:400px; border-bottom:1px solid var(--line); box-shadow:0 14px 28px rgba(0,0,0,.45); }
-    .topbar nav a{ padding:15px 22px; border-top:1px solid rgba(255,255,255,.06); font-size:15px; letter-spacing:0; }
-    .topbar nav a:first-child{ border-top:0; }
-    .topbar nav a.active::before{ display:none; }
-    .topbar nav a.active{ color:var(--gold); }
-    .topbar nav a.nav-cta{ display:block; color:var(--gold); font-weight:700; background:rgba(200,168,99,.08); }
-    .topbar .qbtn{ display:none; }
-  }
-  @media (max-width:860px){ .topbar nav a{ } }
+  /* 토큰·리셋·헤더(.topbar)·body 기본은 css/site.css 공용. 페이지 고유 변수·배경만 남김 */
+  :root { --card:#10162e; --card-2:#0c1126; --line:rgba(200,168,99,.18); }
+  body { background:var(--navy); color:var(--cream); }
 
   /* ── 배경 (단색) ── */
   .page { position:relative; padding-bottom:clamp(60px,7vw,100px); background:var(--navy); }
   .wrap { max-width:1240px; margin:0 auto; padding:0 clamp(20px,4vw,48px); }
 
   /* ── 공통 서브 헤더 규격 ── */
-  .sub-head { padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,76px); max-width:620px; }
-  .sub-head .en { font-family:"Cormorant Garamond","Times New Roman",serif; font-size:clamp(44px,6vw,74px); font-weight:600; letter-spacing:.135em; line-height:1; color:var(--gold); }
-  .sub-head .kr { margin-top:clamp(20px,3vw,32px); font-size:clamp(20px,2.4vw,29px); font-weight:700; color:#f4eede; letter-spacing:.02em; }
-  .sub-head .desc { margin-top:14px; font-size:clamp(14px,1.5vw,16px); line-height:1.85; color:var(--muted); }
+  /* 규격은 css/site.css 의 .page-head 로 일원화 */
 
   /* ── 본문 2단 (목차 + 내용) ── */
   .pv-grid { display:grid; grid-template-columns:220px minmax(0,1fr); gap:clamp(24px,4vw,56px); align-items:start; }
@@ -123,33 +80,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .callout .v { font-size:13.5px; line-height:1.8; color:#d2d7e4; }
   .callout .v b { color:var(--gold); }
 
-  /* ── FOOTER ── */
-  .footer { background:#0a0f24; color:#b9c0d6; padding:clamp(40px,5vw,72px) 20px clamp(28px,4vw,46px); }
-  .footer a { color:inherit; text-decoration:none; }
-  .footer-top { max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:16px 30px; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08); }
-  .footer-hours { display:flex; align-items:center; gap:14px; }
-  .footer-hours .clock { width:36px;height:36px;border:1px solid #c8a863;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex:none; }
-  .footer-hours .ft { font-size:13px; line-height:1.7; }
-  .br-mb { display: none; }
-  @media (max-width: 620px) { .br-mb { display: inline; } }
-  /* 모바일에서만 숨기는 구분자(·) — 데스크톱은 한 줄 유지 */
-  .sep-mb { display: inline; }
-  @media (max-width: 620px) { .sep-mb { display: none; } }
-  .footer-hours .ft b { color:#e8dcc0; font-weight:600; }
-  .footer-nav { margin-left:auto; display:flex; gap:22px; flex-wrap:wrap; font-size:13px; }
-  .footer-nav a:hover { color:var(--gold); }
-  .footer-main { max-width:1280px; margin:clamp(24px,3vw,38px) auto 0; display:flex; flex-wrap:wrap; gap:30px 50px; align-items:flex-start; }
-  .footer-brand { min-width:190px; }
-  .footer-brand img { width:138px; height:auto; }
-  .footer-brand p { margin-top:10px; font-size:12px; color:#7c84a0; letter-spacing:.05em; }
-  .footer-stores { display:grid; grid-template-columns:repeat(2,minmax(210px,1fr)); gap:4px 40px; flex:1; }
-  .footer-stores div { font-size:12.5px; line-height:1.95; color:#9aa2bd; }
-  .footer-stores b { color:#c3cae0; font-weight:600; }
-  .footer-social { display:flex; gap:10px; }
-  .footer-social a { width:34px;height:34px;border-radius:50%; background:rgba(255,255,255,.08); display:flex;align-items:center;justify-content:center; font-size:12px; color:#cfd5e6; }
-  .footer-social a:hover { background:var(--gold); color:#0a0f24; }
-  .footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
-  @media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
+  /* 푸터(.footer)·유틸(.br-mb/.sep-mb)은 css/site.css 공용 */
 </style>
 </head>
 <body>
@@ -172,7 +103,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <section class="page">
     <div class="wrap">
 
-      <div class="sub-head">
+      <div class="page-head sub-head">
         <h1 class="en">PRIVACY</h1>
         <p class="kr">개인정보취급방침</p>
         <p class="desc">상상의 문은 이용자의 개인정보를 소중히 여기며<br>관련 법령에 따라 안전하게 관리합니다.</p>

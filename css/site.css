@@ -1,0 +1,154 @@
+/* ═══════════════════════════════════════════════════════════════
+   상상의 문 — 서브페이지 공용 스타일 (site.css)
+   story / themes / reserve / check / booking … 가 공유하는
+   토큰·리셋·헤더(.topbar)·푸터(.footer)·공통 유틸을 한 곳에 모은다.
+
+   ※ 로드 순서: fonts.css 다음, 각 페이지 인라인 <style> 앞.
+     → 페이지 인라인 규칙이 항상 이 파일을 덮어쓸 수 있다(고유 변형 보존).
+   ※ index.html은 히어로 위 투명 오버레이 헤더(.m-header)라 제외.
+
+   [의도적으로 여기 두지 않은 것]
+   - --line : story·themes는 이 변수를 정의하지 않아 .nav-burger /
+     .topbar>nav.open 의 테두리가 "없음"으로 렌더된다(기존 동작).
+     reserve·check·booking 은 각 페이지 :root 에서 --line 을 정의해
+     테두리가 보인다. 이 차이를 그대로 보존하려고 site.css 는 --line 을
+     선언하지 않고, 해당 규칙에서 var(--line) 참조만 유지한다.
+   - --card / --card-2 : 예약 플로우(reserve·check·booking) 전용 → 각 페이지에 둠.
+   - body 배경/글자색 : story 는 밝은 페이지(#ededf0), 나머지는 navy →
+     공통이 아니므로 각 페이지 인라인 body 에 남긴다.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── 공통 토큰 ───────────────────────────────────────────────── */
+:root {
+  --navy:   #0a0e1c;
+  --gold:   #f2d7ac;
+  --gold-d: #c8a863;
+  --cream:  #ece4d6;
+  --muted:  #b0bbd4;
+}
+
+/* ── 리셋 / 베이스 ───────────────────────────────────────────── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  /* 거의 모든 텍스트는 Paperozi (배경/글자색은 페이지별로 둠) */
+  font-family: 'Paperozi', "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+img { display: block; -webkit-user-drag: none; user-select: none; }
+
+/* ══════════════ 상단 헤더 (.topbar) ══════════════ */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  height: 78px;
+  background: linear-gradient(180deg, #0c1124 0%, #080b18 100%);
+  border-bottom: 1px solid rgba(200,168,99,.18);
+  display: flex; align-items: center;
+  padding: 0 clamp(20px, 4vw, 56px);
+}
+.topbar .brand { display: flex; align-items: center; flex: none; }
+.topbar .brand img { height: 40px; width: auto; }
+.topbar nav {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  gap: 38px;
+}
+.topbar nav a {
+  position: relative;
+  color: #d9d2c4; text-decoration: none;
+  font-size: 16px; font-weight: 600; letter-spacing: 1.5px;
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+.topbar nav a:hover { color: var(--gold); }
+.topbar nav a.active { color: var(--gold); font-weight: 700; }
+.topbar nav a.active::before {
+  content: ""; position: absolute; left: 50%; top: -14px;
+  width: 13px; height: 13px; transform: translateX(-50%);
+  background: url('../img/story/header_star.webp') center/contain no-repeat;
+}
+
+/* 우상단 예약 확인 버튼 */
+.topbar .qbtn {
+  flex: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 44px; padding: 0 22px;
+  border: 1px solid rgba(200,168,99,.55); border-radius: 6px;
+  color: var(--gold); text-decoration: none;
+  font-size: 15px; font-weight: 600; letter-spacing: 1px;
+  transition: background .2s ease, border-color .2s ease;
+}
+.topbar .qbtn:hover { background: rgba(200,168,99,.12); border-color: var(--gold); }
+.topbar .qbtn span { font-size: 18px; }
+
+/* 모바일 햄버거 — var(--line) 미정의 페이지(story·themes)는 테두리 없음(의도) */
+.nav-burger{ display:none; flex-direction:column; gap:5px; align-items:center; justify-content:center; width:42px; height:42px; flex:none; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+.nav-burger span{ width:20px; height:2px; background:var(--gold); border-radius:2px; transition:transform .25s, opacity .2s; }
+.nav-burger.on span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.nav-burger.on span:nth-child(2){ opacity:0; }
+.nav-burger.on span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+.topbar nav a.nav-cta{ display:none; }
+
+@media (max-width:760px){
+  .topbar{ height:64px; padding:0 16px; justify-content:space-between; }
+  .nav-burger{ display:flex; }
+  .topbar > nav{ position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0;
+                 background:linear-gradient(180deg,#0c1124,#080b18); border-bottom:0; box-shadow:none;
+                 max-height:0; overflow:hidden; transition:max-height .32s ease; }
+  .topbar > nav.open{ max-height:400px; border-bottom:1px solid var(--line); box-shadow:0 14px 28px rgba(0,0,0,.45); }
+  .topbar nav a{ padding:15px 22px; border-top:1px solid rgba(255,255,255,.06); font-size:15px; letter-spacing:0; }
+  .topbar nav a:first-child{ border-top:0; }
+  .topbar nav a.active::before{ display:none; }
+  .topbar nav a.active{ color:var(--gold); }
+  .topbar nav a.nav-cta{ display:block; color:var(--gold); font-weight:700; background:rgba(200,168,99,.08); }
+  .topbar .qbtn{ display:none; }
+}
+
+/* ══════════════ 푸터 (.footer) ══════════════ */
+.footer { background:#0a0f24; color:#b9c0d6; padding:clamp(40px,5vw,72px) 20px clamp(28px,4vw,46px); }
+.footer a { color:inherit; text-decoration:none; }
+.footer-top { max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:16px 30px; padding-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08); }
+.footer-hours { display:flex; align-items:center; gap:14px; }
+.footer-hours .clock { width:36px;height:36px;border:1px solid #c8a863;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex:none; }
+.footer-hours .ft { font-size:13px; line-height:1.7; }
+.footer-hours .ft b { color:#e8dcc0; font-weight:600; }
+.footer-nav { margin-left:auto; display:flex; gap:22px; flex-wrap:wrap; font-size:13px; }
+.footer-nav a:hover { color:var(--gold); }
+.footer-main { max-width:1280px; margin:clamp(24px,3vw,38px) auto 0; display:flex; flex-wrap:wrap; gap:30px 50px; align-items:flex-start; }
+.footer-brand { min-width:190px; }
+.footer-brand img { width:138px; height:auto; }
+.footer-brand p { margin-top:10px; font-size:12px; color:#7c84a0; letter-spacing:.05em; }
+.footer-stores { display:grid; grid-template-columns:repeat(2,minmax(210px,1fr)); gap:4px 40px; flex:1; }
+.footer-stores div { font-size:12.5px; line-height:1.95; color:#9aa2bd; }
+.footer-stores b { color:#c3cae0; font-weight:600; }
+.footer-social { display:flex; gap:10px; }
+.footer-social a { width:34px;height:34px;border-radius:50%; background:rgba(255,255,255,.08); display:flex;align-items:center;justify-content:center; font-size:12px; color:#cfd5e6; }
+.footer-social a:hover { background:var(--gold); color:#0a0f24; }
+.footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
+@media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
+
+/* ══════════════ 공통 유틸 ══════════════ */
+/* 모바일(≤620px)에서만 줄바꿈/구분자(·) 토글 — 데스크톱은 한 줄 유지 */
+.br-mb { display: none; }
+.sep-mb { display: inline; }
+@media (max-width: 620px) {
+  .br-mb { display: inline; }
+  .sep-mb { display: none; }
+}
+
+/* ══════════════ 공용 페이지 타이틀 (.page-head) ══════════════ */
+/* 서브페이지 상단 타이틀 블록 일원화 — themes/reserve/location/notice/
+   check/booking/partnership/privacy 공유. (story 는 밝은 톤이라 제외)
+   페이지별 특수 케이스(예: reserve 모바일 .resv-head .en 축소)는
+   각 페이지 인라인에서 이 규칙 위에 덮어쓴다. */
+.page-head { position:relative; padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,76px); max-width:620px; }
+.page-head::before { content:''; position:absolute; top:clamp(32px,5vw,52px); left:0; width:48px; height:2px; background:linear-gradient(90deg, var(--gold) 0%, transparent 100%); }
+.page-head .en { font-family:"Cormorant Garamond","Times New Roman",serif; font-size:clamp(48px,6.5vw,76px); font-weight:600; letter-spacing:.135em; line-height:1; color:var(--gold); text-shadow:0 4px 18px rgba(0,0,0,.35); margin-bottom:clamp(8px,1.5vw,14px); }
+.page-head .kr { margin-top:0; font-size:clamp(20px,2.4vw,29px); font-weight:700; color:#f4eede; letter-spacing:.02em; margin-bottom:clamp(14px,2vw,20px); }
+.page-head .desc { margin-top:0; font-size:clamp(14px,1.5vw,16px); line-height:1.85; color:var(--muted); }
+
+/* ══════════════ 공용 포커스 가시성 (키보드 접근성) ══════════════ */
+/* 기존 .go-theme 등 페이지별 focus 처리와 중복돼도 무방 — 누락 보강용 */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+.topbar nav a:focus-visible { outline:2px solid var(--gold); outline-offset:4px; border-radius:3px; }

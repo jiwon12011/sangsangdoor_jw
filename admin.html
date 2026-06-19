@@ -6,6 +6,9 @@
 <title>상상의 문 — 관리자</title>
 <link rel="stylesheet" href="css/fonts.css" />
 <!-- Supabase 연동 (예약 데이터 클라우드 공유) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<!-- defer 보류: 인라인 부트스트랩이 top-level에서 SD/SDThemes를 즉시 사용(시드·클라우드 동기화).
+     defer 시 시드 경로가 축소돼 공유 클라우드 무결성 위험 → 내부 관리자라 perf 이득보다 안전 우선 -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-config.js"></script>
 <script src="js/themes-store.js"></script>
