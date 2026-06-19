@@ -21,6 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>상상의 문 — 예약</title>
 
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="stylesheet" href="css/fonts.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -263,8 +264,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
   @media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/themes-store.js"></script>
+<!-- defer: 콘텐츠 렌더를 막지 않게(파싱 비차단). 클라우드 동기화는 인라인 스크립트가 DOMContentLoaded 후 적용 -->
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="js/themes-store.js"></script>
 </head>
 <body>
 
@@ -327,7 +329,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h2 class="d-name" id="dName">테마를 선택하세요</h2>
 
           <div class="d-top">
-            <div class="d-poster"><img id="dPoster" src="" alt="" /></div>
+            <div class="d-poster"><img id="dPoster" src="" alt="" decoding="async" fetchpriority="high" /></div>
             <div class="d-info" id="dInfo"></div>
           </div>
           <p class="d-desc" id="dDesc"></p>
@@ -691,23 +693,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     const q=new URLSearchParams(location.search);
     function startReserve(){ initBranches(q.get("branch"), q.get("theme")); renderCal(); }
-    // 관리자 테마(클라우드) 가 있으면 지점별 테마 목록을 덮어쓰기, 없으면 기존 데이터로 폴백
-    if(window.SDThemes && window.SDThemes.enabled){
+
+    // 1) 하드코딩 데이터로 즉시 렌더 — Supabase 응답을 기다리지 않고 내용·이미지 바로 표시
+    startReserve();
+
+    // 2) 관리자 테마(클라우드)는 도착하면 덮어쓰고 재렌더(progressive). defer 스크립트는 DOMContentLoaded 전 실행되어 이 시점 SDThemes 준비됨
+    window.addEventListener('DOMContentLoaded', function(){
+      if(!(window.SDThemes && window.SDThemes.enabled)) return;
       window.SDThemes.byBranch()
         .then(function(g){
-          if(g && Object.keys(g).length){
-            Object.keys(g).forEach(function(b){
-              var mapped = g[b].map(window.SDThemes.rowToReserve).filter(function(t){ return t.active!==false; });
-              if(mapped.length){
-                if(!BR[b]) BR[b] = { info:"", hours:"평일 12:00–23:00 · 주말·공휴일 10:00–23:00", themes:[] };
-                BR[b].themes = mapped;
-              }
-            });
-          }
+          if(!(g && Object.keys(g).length)) return;   // 클라우드 데이터 없으면 하드코딩 유지(재렌더 X)
+          Object.keys(g).forEach(function(b){
+            var mapped = g[b].map(window.SDThemes.rowToReserve).filter(function(t){ return t.active!==false; });
+            if(mapped.length){
+              if(!BR[b]) BR[b] = { info:"", hours:"평일 12:00–23:00 · 주말·공휴일 10:00–23:00", themes:[] };
+              BR[b].themes = mapped;
+            }
+          });
+          startReserve();   // 클라우드 반영 재렌더
         })
-        .catch(function(e){ console.warn("[reserve] 테마 동기화 실패", e); })
-        .then(startReserve);
-    } else { startReserve(); }
+        .catch(function(e){ console.warn("[reserve] 테마 동기화 실패", e); });
+    });
   </script>
 
 <script>(function(){var b=document.getElementById("navBurger"),n=document.getElementById("navMenu");if(b&&n){b.addEventListener("click",function(){b.classList.toggle("on");n.classList.toggle("open");});}})();</script>

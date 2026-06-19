@@ -21,6 +21,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>상상의 문 — THEMES</title>
 
+<!-- 외부 CDN(폰트·Supabase) 핸드셰이크 단축 -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <!-- 공용 웹폰트 (Paperozi) -->
 <link rel="stylesheet" href="css/fonts.css" />
 <!-- 영문 타이틀용 세리프 (STORY 페이지와 동일) -->
@@ -292,8 +294,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .footer-bottom { max-width:1280px; margin:clamp(22px,3vw,36px) auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:#6f7794; }
   @media (max-width:760px){ .footer-stores{ display:none; } .footer-nav{ margin-left:0; width:100%; } }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/themes-store.js"></script>
+<!-- defer: 콘텐츠 렌더를 막지 않게(파싱 비차단). 클라우드 동기화는 아래 인라인 스크립트가 DOMContentLoaded 후 적용 -->
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="js/themes-store.js"></script>
 </head>
 <body>
 
@@ -440,7 +443,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         return `
         <article class="tcard">
           <div class="tframe">
-            <img src="${t.img}" alt="${esc(t.name)}" loading="lazy" />
+            <img src="${t.img}" alt="${esc(t.name)}" loading="eager" decoding="async" fetchpriority="high" />
             <span class="genre">${esc(t.genre)}</span>
             <div class="tinfo">
               <p class="ti-genre">${esc(t.genre)}</p>
@@ -537,12 +540,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     function startThemes(){ render("대학로점"); runDeepLink(); }
 
-    if(window.SDThemes && window.SDThemes.enabled){
+    // 1) 하드코딩 데이터로 즉시 렌더 — 네트워크(Supabase) 대기 없이 콘텐츠·이미지 바로 표시
+    startThemes();
+
+    // 2) 클라우드(관리자 테마)는 도착하면 덮어쓰기(progressive). defer 스크립트는 DOMContentLoaded 전에 실행되므로 이 시점엔 SDThemes 준비됨
+    window.addEventListener('DOMContentLoaded', function(){
+      if(!(window.SDThemes && window.SDThemes.enabled)) return;
       window.SDThemes.byBranch()
-        .then(function(g){ applyCloudThemes(g); })
-        .catch(function(e){ console.warn("[themes] 테마 동기화 실패", e); })
-        .then(startThemes);
-    } else { startThemes(); }
+        .then(function(g){
+          if(!g || !Object.keys(g).length) return;   // 클라우드 데이터 없으면 하드코딩 유지(재렌더 X)
+          applyCloudThemes(g);
+          var active = document.querySelector('#branchTabs button.active');
+          render(active ? active.dataset.branch : "대학로점");
+          runDeepLink();
+        })
+        .catch(function(e){ console.warn("[themes] 테마 동기화 실패", e); });
+    });
   </script>
 
 <script>(function(){var b=document.getElementById("navBurger"),n=document.getElementById("navMenu");if(b&&n){b.addEventListener("click",function(){b.classList.toggle("on");n.classList.toggle("open");});}})();</script>
