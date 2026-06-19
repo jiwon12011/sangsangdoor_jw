@@ -1,2 +1,5 @@
 # Local Claude Code / preview tooling
 .claude/
+
+# jiwon-harness 런타임 (테스트·빌드 캡처)
+.jiwon-team/
