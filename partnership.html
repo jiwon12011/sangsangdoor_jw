@@ -20,6 +20,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>상상의 문 — 제휴문의</title>
+<meta name="description" content="상상의 문 제휴문의 — 가맹·콘텐츠·단체·마케팅 제휴를 환영합니다." />
+<meta property="og:title" content="상상의 문 — 제휴문의" />
+<meta property="og:description" content="상상의 문 제휴문의 — 가맹·콘텐츠·단체·마케팅 제휴를 환영합니다." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚪</text></svg>" />
 
 <link rel="stylesheet" href="css/fonts.css" />
 <link rel="stylesheet" href="css/site.css" />
@@ -45,7 +50,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* 좌: 제휴 유형 + 연락처 */
   .types { display:flex; flex-direction:column; gap:14px; }
-  .type { background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:11px; padding:20px 22px; }
+  .type { background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:11px; padding:20px 22px;
+          transition:border-color .2s, transform .2s, box-shadow .25s; }
+  .type:hover { border-color:rgba(200,168,99,.35); transform:translateY(-3px);
+                box-shadow:0 0 18px rgba(242,215,172,.22), 0 10px 30px rgba(0,0,0,.35); }
   .type .ic { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px;
               background:radial-gradient(circle at 35% 30%, rgba(200,168,99,.3), rgba(200,168,99,.06)); border:1px solid rgba(200,168,99,.4); margin-bottom:13px; }
   .type h3 { font-size:16px; font-weight:700; color:#f0e8d6; margin-bottom:7px; }
@@ -75,6 +83,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width:520px){ .field-row{ grid-template-columns:1fr; } }
   .check { display:flex; align-items:flex-start; gap:11px; cursor:pointer; font-size:13px; color:#c2c8da; line-height:1.5; margin-top:4px; }
   .check input { position:absolute; opacity:0; pointer-events:none; }
+  .check input:focus-visible + .box { outline:2px solid var(--gold); outline-offset:2px; }
   .check .box { flex:none; width:20px; height:20px; border:1px solid #4a5070; border-radius:5px; display:flex; align-items:center; justify-content:center; transition:all .15s; margin-top:1px; }
   .check.on .box { background:var(--gold); border-color:var(--gold); }
   .check.on .box::after { content:"✓"; color:#0a0e1c; font-size:13px; font-weight:800; }
@@ -198,7 +207,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <label class="check" id="chkAgree"><input type="checkbox"><span class="box"></span><span>[필수] <a href="privacy.html" target="_blank">개인정보 수집·이용</a>에 동의합니다. (문의 응대 목적, 1년 보관)</span></label>
 
           <button class="submit" id="sendBtn">문의 보내기 <span>→</span></button>
-          <div class="msg" id="msg" role="status" aria-live="polite">
+          <div class="msg" id="msg" role="status" aria-live="polite"></div>
         </div>
       </div>
 
@@ -216,7 +225,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a href="notice.html">공지사항</a>
         <a href="check.html">예약확인</a>
         <a href="partnership.html">제휴문의</a>
-        <a href="privacy.html">개인정보취급방침</a>
+        <a href="privacy.html">개인정보처리방침</a>
       </nav>
     </div>
     <div class="footer-main">
@@ -234,7 +243,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
     <div class="footer-bottom">
-      <span>COPYRIGHT ⓒ 2026 상상의문. All right reserved. / created by TEAM 1</span>
+      <span>COPYRIGHT ⓒ 2026 상상의문. All rights reserved. / created by TEAM 1</span>
       <span>이메일 imaginarydoor@yologuys.com</span>
       <a href="admin.html" style="color:inherit;opacity:.55">관리자</a>
     </div>
@@ -250,6 +259,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       else e.target.value=v.slice(0,3)+"-"+v.slice(3,7)+"-"+v.slice(7);
     });
     const msg=document.getElementById("msg");
+    // Enter 로도 제출 (textarea 제외 — 줄바꿈 유지)
+    ["fType","fName","fCompany","fPhone","fEmail"].forEach(id=>{
+      document.getElementById(id).addEventListener("keydown",e=>{
+        if(e.key==="Enter"){ e.preventDefault(); document.getElementById("sendBtn").click(); }
+      });
+    });
     document.getElementById("sendBtn").addEventListener("click",()=>{
       msg.className="msg";
       const type=document.getElementById("fType").value;

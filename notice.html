@@ -20,6 +20,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>상상의 문 — 공지사항</title>
+<meta name="description" content="상상의 문 공지사항과 자주 묻는 질문(FAQ) — 방문 전 꼭 확인해 주세요." />
+<meta property="og:title" content="상상의 문 — 공지사항" />
+<meta property="og:description" content="상상의 문 공지사항과 자주 묻는 질문(FAQ) — 방문 전 꼭 확인해 주세요." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚪</text></svg>" />
 
 <link rel="stylesheet" href="css/fonts.css" />
 <link rel="stylesheet" href="css/site.css" />
@@ -83,7 +88,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                  transform:rotate(45deg); transition:transform .3s ease; margin-left:4px; }
   .acc-item.open .acc-q .chev { transform:rotate(-135deg); }
   .acc-a { max-height:0; overflow:hidden; transition:max-height .35s ease; }
-  .acc-item.open .acc-a { max-height:400px; }
+  .acc-item.open .acc-a { max-height:900px; }   /* 모바일 장문 답변도 잘리지 않게 여유 확보 */
   .acc-a .inner { padding:0 6px 24px; font-size:14.5px; line-height:1.8; color:#bcc2d4; white-space:pre-line; }
   .acc-q .title-wrap { flex:1; display:flex; align-items:center; gap:14px; min-width:0; }
   .acc-q .title-wrap .title { flex:1; }
@@ -97,6 +102,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .acc-q .date { order:3; width:100%; padding-left:40px; }
     .acc-a .inner { padding-left:6px; }
   }
+
+  /* 하단 예약 유도 CTA */
+  .notice-cta { max-width:1000px; margin-top:clamp(34px,5vw,54px); text-align:center; }
+  .notice-cta p { font-size:14.5px; color:var(--muted); margin-bottom:14px; }
+  .notice-cta a { display:inline-flex; align-items:center; gap:9px; padding:14px 30px; border-radius:8px;
+                  background:var(--gold); color:#0a0e1c; font-size:15.5px; font-weight:700; text-decoration:none;
+                  transition:filter .2s; }
+  .notice-cta a:hover { filter:brightness(1.06); }
 
   /* 푸터(.footer)·유틸(.br-mb/.sep-mb)은 css/site.css 공용 */
 </style>
@@ -144,6 +157,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="acc" id="accFaq"></div>
       </div>
 
+      <!-- 예약 유도 CTA -->
+      <div class="notice-cta">
+        <p>확인하셨다면, 이제 문을 열 차례예요.</p>
+        <a href="reserve.html">예약하러 가기 <span>→</span></a>
+      </div>
+
     </div>
   </section>
 
@@ -158,7 +177,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a href="notice.html">공지사항</a>
         <a href="check.html">예약확인</a>
         <a href="partnership.html">제휴문의</a>
-        <a href="privacy.html">개인정보취급방침</a>
+        <a href="privacy.html">개인정보처리방침</a>
       </nav>
     </div>
     <div class="footer-main">
@@ -176,7 +195,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
     <div class="footer-bottom">
-      <span>COPYRIGHT ⓒ 2026 상상의문. All right reserved. / created by TEAM 1</span>
+      <span>COPYRIGHT ⓒ 2026 상상의문. All rights reserved. / created by TEAM 1</span>
       <span>이메일 imaginarydoor@yologuys.com</span>
       <a href="admin.html" style="color:inherit;opacity:.55">관리자</a>
     </div>
@@ -219,7 +238,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     function accItem(top, body){
       return `<div class="acc-item">
-        <button class="acc-q">${top}<span class="chev"></span></button>
+        <button class="acc-q" aria-expanded="false">${top}<span class="chev"></span></button>
         <div class="acc-a"><div class="inner">${body}</div></div>
       </div>`;
     }
@@ -236,14 +255,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       esc(f.a)
     )).join("");
 
-    // 아코디언: 클릭 시 펼침/접힘 (한 번에 하나만 열림)
+    // 아코디언: 클릭 시 펼침/접힘 (한 번에 하나만 열림) — aria-expanded 동기화
     document.querySelectorAll(".acc").forEach(acc=>{
       acc.addEventListener("click", e=>{
         const q = e.target.closest(".acc-q"); if(!q) return;
         const item = q.parentElement;
         const open = item.classList.contains("open");
-        acc.querySelectorAll(".acc-item.open").forEach(i=>i.classList.remove("open"));
-        if(!open) item.classList.add("open");
+        acc.querySelectorAll(".acc-item.open").forEach(i=>{
+          i.classList.remove("open");
+          i.querySelector(".acc-q").setAttribute("aria-expanded","false");
+        });
+        if(!open){ item.classList.add("open"); q.setAttribute("aria-expanded","true"); }
       });
     });
 

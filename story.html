@@ -20,6 +20,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>상상의 문 — STORY</title>
+<meta name="description" content="상상의 문 브랜드 스토리 — 문 너머에서 시작되는 당신만의 이야기." />
+<meta property="og:title" content="상상의 문 — STORY" />
+<meta property="og:description" content="상상의 문 브랜드 스토리 — 문 너머에서 시작되는 당신만의 이야기." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚪</text></svg>" />
 
 <!-- 공용 웹폰트 (Paperozi) -->
 <link rel="stylesheet" href="css/fonts.css" />
@@ -198,6 +203,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-shadow: 0 2px 10px rgba(0,0,0,.6);
     padding: 0 14%;
   }
+  /* 이야기 끝 CTA — 밝은 배경에 맞춘 골드 버튼 */
+  .story-cta { margin-top: clamp(36px, 5vw, 60px); display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .story-cta a { display: inline-flex; align-items: center; gap: 9px; padding: 15px 32px; border-radius: 8px;
+                 font-size: 15.5px; font-weight: 700; text-decoration: none;
+                 transition: filter .2s, background .2s, color .2s; }
+  .story-cta .primary { background: #c8a863; color: #1a1206; box-shadow: 0 10px 26px rgba(200,168,99,.35); }
+  .story-cta .primary:hover { filter: brightness(1.07); }
+  .story-cta .ghost { border: 1.5px solid #c8a863; color: #8a6f35; }
+  .story-cta .ghost:hover { background: rgba(200,168,99,.15); }
   .key-img {
     position: absolute;
     left: -15%; top: 36%;            /* transform 중앙정렬 대신 top 고정(등장 모션과 충돌 방지) */
@@ -310,6 +324,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="key-img anim" data-anim="keyin"><img src="img/story/story_key.webp" alt="열쇠" /></div>
       <p class="key-text anim" data-anim="appear">당신의 상상력이<br>새로운 이야기를 여는<br>열쇠가 될 것입니다.</p>
     </div>
+    <!-- 이야기의 끝 → 예약/테마로 이어지는 CTA -->
+    <div class="story-cta">
+      <a class="primary" href="reserve.html">지금 예약하기 <span>→</span></a>
+      <a class="ghost" href="themes.html">테마 둘러보기</a>
+    </div>
   </div>
 
   <!-- FOOTER (메인과 동일) -->
@@ -323,7 +342,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a href="notice.html">공지사항</a>
         <a href="check.html">예약확인</a>
         <a href="partnership.html">제휴문의</a>
-        <a href="privacy.html">개인정보취급방침</a>
+        <a href="privacy.html">개인정보처리방침</a>
       </nav>
     </div>
 
@@ -336,7 +355,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="footer-stores">
         <div><b>대학로점</b> 02-765-7771<br>서울특별시 종로구 창경궁로34길 18-5, 지하3층</div>
         <div><b>분당서현점</b> 031-708-1777<br>경기도 성남시 분당구 황새울로342번길 11 금호리빙스텔 지하1층</div>
-        <div><b>홍대점</b> 02-336-9007<br>서울특별시 마포구 홍익로 19, 2층</div>
         <div><b>광주점</b> 062-226-1126<br>광주광역시 동구 충장로 80-5, 6층</div>
         <div><b>수원점</b> 010-4397-3057<br>경기도 수원시 팔달구 인계로138번길 44, 4층</div>
         <div><b>부평점</b> 010-3242-3218<br>인천광역시 부평구 시장로12번길 7 보광빌딩 4층</div>
@@ -345,7 +363,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 
     <div class="footer-bottom">
-      <span>COPYRIGHT ⓒ 2026 상상의문. All right reserved. / created by TEAM 1</span>
+      <span>COPYRIGHT ⓒ 2026 상상의문. All rights reserved. / created by TEAM 1</span>
       <span>이메일 imaginarydoor@yologuys.com</span>
       <a href="admin.html" style="color:inherit;opacity:.55">관리자</a>
     </div>
